@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ListaUsuariosComponent } from './components/usuarios/lista-usuarios/lista-usuarios.component';
 import { PerfilUsuarioComponent } from './components/usuarios/perfil-usuario/perfil-usuario.component';
+import { InventarioFormComponent } from './components/forms/inventario-form/inventario-form.component';
+import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosComponent,
     ListaUsuariosComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    InventarioFormComponent,
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
