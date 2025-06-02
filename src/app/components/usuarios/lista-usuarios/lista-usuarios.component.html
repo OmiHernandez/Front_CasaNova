@@ -1,1 +1,29 @@
-<p>lista-usuarios works!</p>
+
+<div class="verLeads">
+    <p class="title">Lista de usuarios</p>
+    <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo de usuario</th>
+            <th>Acción</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor = "let user of listaUsuarios">
+            <td>{{user.username}}</td>
+            <td>{{user.userType}}</td>
+            <td class="flex-sa iconos">
+                <!-- <i class="fa-solid fa-wrench"  ></i> -->
+                <i [attr.data.id]="user._id" class="fa-solid fa-trash-can" (click)="deleteUser(user._id)"></i>
+            </td>
+           
+          </tr>
+          
+        </tbody>
+      </table>
+
+      
+    
+</div>
