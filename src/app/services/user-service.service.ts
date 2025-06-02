@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { GlobalApiService } from 'src/app/services/global-api.service';
+
 import { HttpClient } from '@angular/common/http';
+import { GlobalApiService } from './global-api.service';
 
 
 @Injectable({
