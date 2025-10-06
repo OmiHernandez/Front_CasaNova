@@ -1,0 +1,6 @@
+  // Tipos de usuario
+  // 0 - No se ha logueado
+  // 1 - Administrador
+  // 2 - Tesorero
+  // 3 - Tecnico
+  // 4 - Vendedor
