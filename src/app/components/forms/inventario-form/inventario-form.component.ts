@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { InventarioApiService } from 'src/app/services/inventario-api.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { Router } from '@angular/router';
+
 import Swal from 'sweetalert2';
-import { InventarioApiService } from '../../../services/inventario-api.service';
-import { LoginServiceService } from '../../../services/login-service.service';
+
 @Component({
   selector: 'app-inventario-form',
   templateUrl: './inventario-form.component.html',
@@ -249,15 +251,15 @@ export class InventarioFormComponent implements OnInit {
     this.norrellenados = [];
     this.verificador = 0;
     console.log('contador:', this.verificador);
-    const vmanzana = this.inventarioForm.get('manzana')!.value;
-    const vlote = this.inventarioForm.get('lote')!.value;
-    const vprecioVenta = this.inventarioForm.get('precioVenta')!.value;
+    const vmanzana = this.inventarioForm.get('manzana').value;
+    const vlote = this.inventarioForm.get('lote').value;
+    const vprecioVenta = this.inventarioForm.get('precioVenta').value;
     const vmedidasTerreno = this.metrosterreno;
-    const vdescuentoPronto = this.inventarioForm.get('descuentoPronto')!.value;
+    const vdescuentoPronto = this.inventarioForm.get('descuentoPronto').value;
     const vterrenosComercial =
-      this.inventarioForm.get('terrenosComercial')!.value;
-    const vopcion = this.inventarioForm.get('opcion')!.value;
-    const vdesarrollo = this.inventarioForm.get('desarrollo')!.value;
+      this.inventarioForm.get('terrenosComercial').value;
+    const vopcion = this.inventarioForm.get('opcion').value;
+    const vdesarrollo = this.inventarioForm.get('desarrollo').value;
 
 
     console.log('El valor de la manzana es:', vmanzana);
@@ -348,4 +350,7 @@ export class InventarioFormComponent implements OnInit {
     }
     console.log('contador:', this.verificador);
   }
+
+
+
 }

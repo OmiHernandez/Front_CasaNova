@@ -14,7 +14,6 @@ import { NavbarComponent } from './components/header/navbar/navbar.component';
   declarations: [
     AppComponent,
     ListaUsuariosComponent,
-    InventarioFormComponent,
     LoginFormComponent,
     RegisterFormComponent,
     HeaderComponent,

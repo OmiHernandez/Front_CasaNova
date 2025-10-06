@@ -6,12 +6,10 @@ describe('InventarioFormComponent', () => {
   let component: InventarioFormComponent;
   let fixture: ComponentFixture<InventarioFormComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       declarations: [InventarioFormComponent]
-    })
-    .compileComponents();
-
+    });
     fixture = TestBed.createComponent(InventarioFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
