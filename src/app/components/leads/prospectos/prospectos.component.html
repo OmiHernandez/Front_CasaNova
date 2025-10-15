@@ -1,0 +1,72 @@
+<div class="verLeads">
+  <p class="title">Prospectos</p>
+  
+      <table>
+        <thead>
+          <tr>
+            <th>Desarrollo</th>
+            <th>Manzana</th>
+            <th>Lote</th>
+            <th>Precio de venta</th>
+            <th>Prototipo</th>
+            <th>Medidas de terreno</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let inv of arrInventarios" [id]="inv._id">
+            <td>{{inv.desarrollo}}</td>
+            <td>{{inv.manzana}}</td>
+            <td>{{inv.lote}}</td>
+            <td>{{inv.precioVenta}}</td>
+            <td>{{inv.prototipo}}</td>
+            <td>{{inv.medidas}}</td>
+            <td>
+              <div class="contenedorb">
+                <button class="botonaccion" (click)="selectaInventario(inv._id, inv.prototipo)">Seleccionar </button>
+              </div>
+            </td>
+           
+         
+          </tr>
+          
+        </tbody>
+      </table>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Origen</th>
+            <th>Correo</th>
+            <th>Numero</th>
+            <th>Nota</th>
+
+            <th colspan="2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Leads of ListaLeads">
+            <td>{{ Leads.leadName }}</td>
+            <td>{{ Leads.leadOrigin }}</td>
+            <td>{{ Leads.leadEmail }}</td>
+            <td>{{ Leads.leadNumber }}</td>
+            <td>{{ Leads.nota }}</td>
+
+            <td>
+              <div class="contenedorb">
+                <button class="botonaccion" (click)="apartar(Leads._id)">Cambiar a apartado</button>
+              </div>
+            </td>
+            <td>
+              <div class="contenedorb">
+                <button class="botonaccion" (click)="regresarLead(Leads._id)">Deshacer accion</button>
+              </div>
+            </td>
+          </tr>
+    
+        </tbody>
+      </table>
+    
+
+</div>
