@@ -1,0 +1,66 @@
+<div class="verLeads">
+  <p class="title">Reportes Post Venta</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Desarrollo</th>
+        <th>Manzana</th>
+        <th>Lote</th>
+        <th>Nombre</th>
+        <th>Origen</th>
+        <th>Correo</th>
+        <th>Numero</th>
+        <th>Nota</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Leads of ListaLeads">
+        <td>{{ Leads.desarrollo }}</td>
+        <td>{{ Leads.manzana }}</td>
+        <td>{{ Leads.lote }}</td>
+        <td>{{ Leads.leadName }}</td>
+        <td>{{ Leads.leadOrigin }}</td>
+        <td>{{ Leads.leadEmail }}</td>
+        <td>{{ Leads.leadNumber }}</td>
+        <td>{{ Leads.nota }}</td>
+        <td>
+          <div class="contenedorb">
+            <button class="botonaccion" (click)="reportepost(Leads._id)">Generar reporte</button>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!--(click)="ocultarme()" -->
+  <div id="formreporte" (click)="ocultarme($event)" [style.display]="mostrarTabla ? 'flex' : 'none'">
+    <form [formGroup]="formGroup">
+    <div>
+      <p>Tipo de reporte</p>
+      <select formControlName="detallesreporte" class="input_style_1 w-75">
+        <option value="Escurrimiento">Escurrimiento en pisos</option>
+        <option value="accesorios">Fallas en accesorios</option>
+        <option value="contactos">Contactos y apagadores</option>
+        <option value="electrica">Instalación electrica</option>
+        <option value="gas">Instalación gas</option>
+        <option value="hidráulica">Instalación hidráulica</option>
+        <option value="sanitaria">Instalación sanitaria</option>
+        <option value="platones">Fisuras en muros y platones</option>
+        <option value="goteras">Fisuras o goteras</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <p>Detalles</p>
+      <input formControlName="otroDetalle" class="input_style_1 w-75" type="text">
+    </div>
+    <br>
+    <div style="display: flex; justify-content: space-between;" class="w-75">
+      <button type="submit" class="btn-style-1" (click)="validateForm()">Subir reporte</button>
+    </div>
+    </form>
+
+  </div>
+
+</div>
