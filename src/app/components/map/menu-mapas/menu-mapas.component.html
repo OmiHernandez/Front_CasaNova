@@ -1,0 +1,57 @@
+<div class="flex-col-c">
+    <div class="flex-sa">
+
+    </div>
+    <div class="flex-col-c  w-100">
+        <div class=" w-100 nav p-1 flex">
+          
+<!--         
+            <div  class="mr-2">
+              <select id="selectUrls" [(ngModel)]="seleccionado" class="p-1">
+                <option *ngFor="let url of urls" [value]="url">{{ url }}</option>
+              </select>
+                <input id="nombreMapa" type="text" class="input_style_1 mr-2">
+                <button (click)="crearMapa()" class="btn-style-1">Crear Mapa</button>
+            </div> -->
+
+            <app-uploadmapa></app-uploadmapa>
+            
+        </div>
+
+
+        <table>
+            <thead>
+              <tr>
+                <th>Nombre del mapa</th>
+                <th>Acción</th>
+         
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let map of mapas" >
+                <td>{{map.nombreMapa}}</td>
+           
+                <td class="w-25 iconos">
+                  <div class="flex-sa">
+                    <button class="btn-style-1" (click)="configurarMapa(map._id)">Configurar</button>
+                    <button class="btn-style-1" (click)="eliminarMapa(map._id)">Eliminar</button>
+                  </div>
+     
+                    <!-- <i class="fa-solid fa-wrench"  ></i>
+                    <i class="fa-solid fa-trash-can" ></i> -->
+                </td>
+               
+              </tr>
+              
+            </tbody>
+          </table>
+
+
+
+
+
+        
+
+    </div>
+</div>
