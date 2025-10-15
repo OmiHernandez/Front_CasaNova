@@ -1,0 +1,23 @@
+<h1>Pronosticos</h1>
+
+<ngx-charts-bar-vertical
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="single"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect()" *ngIf="actualizado">
+</ngx-charts-bar-vertical>
+
+<div class="w-50" >
+  <p>Actualizar pronostico de ventas:</p>
+  <input class="input_style_1 " style="width: 95%;" [(ngModel)]="pronosticoventas">
+  <button class="input_style_1" (click)="modificar()">Modificar</button>
+
+</div>
