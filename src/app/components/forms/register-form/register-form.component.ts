@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { UserServiceService } from 'src/app/services/user-service.service';
+
 //sweet alert
 import Swal from 'sweetalert2';
-import { UserServiceService } from '../../../services/user-service.service';
+
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
@@ -16,7 +18,7 @@ export class RegisterFormComponent implements OnInit {
   tiposusuario: string[] = ['Construccion', 'Ventas', 'Administración', 'Tecnico', 'Vendedor lider'];
 
   norrellenados: string[] = []; //muestra los campos no rellenados
-  
+
   constructor(
     private fb: FormBuilder,
     private registerService: UserServiceService,
@@ -65,7 +67,7 @@ export class RegisterFormComponent implements OnInit {
       });
     }
   }
-
+  
   mapFieldName(fieldName: string): string {
     switch (fieldName) {
       case 'username':
@@ -88,5 +90,23 @@ export class RegisterFormComponent implements OnInit {
       this.RegisterForm?.value.type
     );
   }
-
 }
+/*
+async onSubmit() {
+    console.log(this.RegisterForm.value);
+    if (await this.registerUser()) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Registro exitoso',
+        text: 'Usuario registrado exitosamente.',
+      });
+      this.RegisterForm.reset();
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se encontro el usuario',
+      });
+    }
+  }
+*/

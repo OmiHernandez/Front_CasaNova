@@ -1,12 +1,14 @@
 import { Component ,OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
+
 import Swal from 'sweetalert2';
-import { GlobalApiService } from '../../../services/global-api.service';
-import { LoginServiceService } from '../../../services/login-service.service';
+import { GlobalApiService } from 'src/app/services/global-api.service';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -82,4 +84,7 @@ export class LoginFormComponent implements OnInit {
     const selectedValue = (event.target as HTMLSelectElement).value;
     this.api.changeApi(selectedValue);
   }
+  
+
+
 }
