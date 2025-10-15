@@ -1,0 +1,94 @@
+<app-cotizador></app-cotizador>
+
+<!--<div class="verLeads p-2">
+    <p class="title">AMORTIZACIÓN</p>
+    <p class="txt-c">INFORMACIÓN DEL LOTE</p>
+    <table>
+        <thead>
+          <tr>
+            <th>m2</th>
+            <th>Costo p/m2</th>
+            <th>Precio</th>
+            <th>Enganche</th>
+            <th>Precion c/Enganche</th>
+            <th>Plazo</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input [(ngModel)]="m2" (ngModelChange)="onInputChange($event, 'm2')" id="a_m2" inputmode="numeric" pattern="[0-9]*" style="width: 100%;height: 100%;"></td>
+            
+                <td><input [(ngModel)]="costo" (ngModelChange)="onInputChange($event, 'costo')" id="a_costo" inputmode="numeric" pattern="[0-9]*" style="width: 100%;height: 100%;" ></td>
+                
+                <td><input [(ngModel)]="precioSinEnganche" (ngModelChange)="onInputChange($event, 'precio')" id="a_precio" inputmode="numeric" pattern="[0-9]*" style="width: 100%;height: 100%;"></td>
+            
+                <td><input [(ngModel)]="enganche" (ngModelChange)="hayEnganche()" id="a_enganche" inputmode="numeric" pattern="[0-9]*" style="width: 100%;height: 100%;"></td>
+                
+                <td><input [(ngModel)]="precio" (ngModelChange)="hayEnganche()" readonly id="a_enganche" inputmode="numeric" pattern="[0-9]*" style="width: 100%;height: 100%;"></td>
+                
+                <td><input [(ngModel)]="plazo"  (ngModelChange)="calcularPlazo()" id="a_plazo" type="number" pattern="[1-9]*" style="width: 100%;height: 100%;"></td>
+            </tr>
+            
+          
+        </tbody>
+    </table>
+    <br>
+    <p class="txt-c">ENGANCHE</p>
+    <table>
+        <thead>
+          <tr>
+            <th>Periodo</th>
+            <th>Pago</th>
+            <th>Fecha de pago</th>
+            <th>Interés</th>
+            <th>Capital Amortizado</th>
+            <th>Saldo al final del periodo</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td></td>
+            <td></td>
+            <td>--</td>
+            <td>--</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+          
+        </tbody>
+    </table>
+    <br>
+    <p class="txt-c">MENSUALIDADES</p>
+    <table>
+        <thead>
+          <tr>
+            <th>Periodo</th>
+            <th>Pago</th>
+            <th>Fecha de pago</th>
+            <th>Interés</th>
+            <th>Capital Amortizado</th>
+            <th>Saldo al final del periodo</th>
+            
+          </tr>
+        </thead>
+        <tbody id="trBody">
+          <tr >
+            <td id="c_periodo">a</td>
+            <td id="c_pago">a</td>
+            <td id="c_fecha">a</td>
+            <td id="c_interes">a</td>
+            <td id="c_capital">a</td>
+            <td id="c_saldo">a</td>
+          </tr>
+          
+          
+        </tbody>
+    </table>
+
+
+    
+</div>
+
+-->
