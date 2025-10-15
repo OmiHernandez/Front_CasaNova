@@ -1,4 +1,50 @@
 
+<div class="flex-c">
+    <div class="loginForm ">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"  class="lF_form  ">
+            <div>
+                <p>Inicio de sesión</p>
+            </div>
+            <br>
+           
+            <div>
+                <p></p>
+                    <input formControlName="username" class="w-75 ln-white" placeholder="Usuario">
+            </div>
+            <br>
+            <div>
+                    <input formControlName="password" class="w-75 ln-white" placeholder="Contraseña" type="password">
+            </div>
+            <br>
+            <div class="w-100">
+                <select class="w-75 p-1" (change)="onSelectionChange($event)">
+                    <!-- PASERAS -->
+                    <option value="http://localhost:5000/casNov" >Paseras</option>
+                    <!-- KAVANDA -->
+                    <option value="http://localhost:5000/casNov">Kavanda</option>
+                    <!-- RINCON -->
+                    <option value="http://localhost:5000/casNov">Rincon</option>
+                </select>
+            </div>
+            
+            <br>
+            <div class="lF_button" >
+                <button type="submit" >Acceder</button>
+            </div>
+            <br>
+            
+        </form>
+
+        <div class="lF_img">
+            <img src="../../../../assets/img/dasHausLogo_b.png">
+        </div>
+
+
+
+        
+    </div>
+</div>
+  
 
 
 
