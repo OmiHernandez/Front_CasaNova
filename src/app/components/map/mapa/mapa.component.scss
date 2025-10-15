@@ -1,0 +1,65 @@
+.mapa{
+   background-color: rgb(183, 5, 5);
+   background-image: url('/assets/img/paseras.png');
+   background-size:cover;
+   
+}
+
+.mapa-coords{
+    background-color: rgb(209, 209, 209);
+
+}
+
+
+.cont-mapa{
+    height: 100%;
+}
+
+.map-container {
+  background-repeat: no-repeat;
+    width: 75vw;
+    height: 100vh;
+    background-color: #ccc;
+    position: relative;
+ 
+ 
+  }
+
+  .pin {
+    width: 5px;
+    height: 5px;
+    background-color: rgb(19, 255, 23);
+    border-radius: 50%;
+    position: absolute;
+    transition: all ease 0.3s;
+  }
+
+  .pin:hover{
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+  }
+
+
+
+  .Disponible{
+    background-color: rgb(19, 255, 27) !important;
+  }
+
+  .Apartado{
+    background-color: rgb(255, 208, 19) !important;
+  }
+  .Ocupado{
+    background-color: rgb(255, 19, 19) !important;
+  }
+
+  .loteDisponibilidad{
+    background-color: rgb(184, 184, 184);
+    color: white;
+    padding: 5px;
+    border: 1px solid rgb(98, 98, 98);
+
+  }
+
+
+  

@@ -1,0 +1,49 @@
+<div class="verLeads">
+    <p class="title">Reportes</p>
+
+    <app-reportesgrafica></app-reportesgrafica>
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Tipo de reporte</th>
+          <th>Información del reporte</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reporte of Lista">
+          <td>{{ reporte.nombre}}</td>
+          <td>{{ reporte.tipo }}</td>
+          <td>{{ reporte.desc }}</td>
+          <td>{{ fechatexto(reporte.fecha) }}</td>
+          <td><div class="contenedorb">
+            <button class="botonaccion" (click)="delete(reporte._id)">Dar reporte de baja</button>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="title">Reportes dados de baja</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Tipo de reporte</th>
+          <th>Información del reporte</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reporte of Listafin">
+          <td>{{ reporte.nombre}}</td>
+          <td>{{ reporte.tipo }}</td>
+          <td>{{ reporte.desc }}</td>
+          <td>{{ fechatexto(reporte.fecha) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>

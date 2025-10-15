@@ -1,0 +1,79 @@
+<div class="datosnec">
+
+  <div>
+    <p>Nombre completo del cliente</p>
+    <input class="input_style_1 w-75" id="nombrecom" [(ngModel)]="nombrecomf" placeholder="Nombre">
+  </div>
+  <br>
+  <div>
+    <p>Interior</p>
+    <input class="input_style_1 w-75" id="interiorf" [(ngModel)]="interiorf" placeholder="Interior">
+  </div>
+  <br>
+
+<div>
+  <p>Dirección</p>
+  <input class="input_style_1 w-75" id="direccion" [(ngModel)]="direccionf" placeholder="Dirección">
+</div>
+<br>
+
+
+</div>
+
+<div class="verLeads">
+  <p class="title">Instrucción notarial y Contrato firmados, pendientes de entrega</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Desarrollo</th>
+        <th>Manzana</th>
+        <th>Lote</th>
+        <th>Nombre</th>
+        <th>Origen</th>
+        <th>Correo</th>
+        <th>Numero</th>
+        <th>Nota</th>
+        <th colspan="4">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Leads of ListaLeads">
+        <td>{{ Leads.desarrollo }}</td>
+        <td>{{ Leads.manzana }}</td>
+        <td>{{ Leads.lote }}</td>
+        <td>{{ Leads.leadName }}</td>
+        <td>{{ Leads.leadOrigin }}</td>
+        <td>{{ Leads.leadEmail }}</td>
+        <td>{{ Leads.leadNumber }}</td>
+        <td>{{ Leads.nota }}</td>
+
+
+        <td>
+          <div class="contenedorb">
+            <button class="botonaccion" (click)="createPdfVivienda('direccion', Leads.desarrollo, Leads.manzana, Leads.lote, 'interior', 'nombre')">Acta de entrega vivienda</button>
+          </div>
+        </td>
+
+        <td>
+          <div class="contenedorb">
+            <button class="botonaccion" (click)="createPdfLote('direccion', Leads.desarrollo, Leads.manzana, Leads.lote, 'interior', 'nombre')">Acta de entrega Lote</button>
+          </div>
+        </td>
+
+
+        <td>
+          <div class="contenedorb">
+            <button class="botonaccion" (click)="avanzarlead(Leads._id)">Entregado</button>
+          </div>
+        </td>
+        <td>
+          <div class="contenedorb">
+            <button class="botonaccion" (click)="regresarLead(Leads._id)">Deshacer accion</button>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>

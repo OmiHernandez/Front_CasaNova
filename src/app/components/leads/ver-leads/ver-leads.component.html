@@ -1,0 +1,66 @@
+<div class="verLeads">
+  <p class="title">Lista de leads</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th (click)="ordenar('origen')">Origen</th>
+        <th>Correo</th>
+        <th>Numero</th>
+        <th (click)="ordenar('modelo')">Modelo</th>
+        <th (click)="ordenar('vendedor')">Vendedor</th>
+        <th>Estado</th>
+        <th (click)="ordenar('fecha')">Fecha de captacion</th>
+        <th>Nota</th>
+        <!-- <th>Editar
+        </th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Leads of ListaLeads">
+        <td>{{ Leads.leadName }}</td>
+        <td>{{ Leads.leadOrigin }}</td>
+        <td>{{ Leads.leadEmail }}</td>
+        <td>{{ Leads.leadNumber }}</td>
+        <td>{{ Leads.leadModel }}</td>
+        <td>{{ Leads.nameVendor }}</td>
+        <td>{{ Leads.leadStatus }}</td>
+        <td>{{ fechatexto(Leads.currentDate) }}</td>
+        <td>{{ Leads.nota }}</td>
+        <!-- <td>
+          <div class="contenedorb">
+            <button class="botonaccion" (click)="editar(Leads._id)">Edit</button>
+          </div>
+        </td> -->
+
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <!--<table id="tablareasignar" [style.display]="mostrarTabla ? 'table' : 'none'">-->
+  <div id="tablareasignar" (click)="ocultarme()" [style.display]="mostrarTabla ? 'table' : 'none'">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Reasignar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vendor of ListaVendors">
+          <td>{{ vendor.username }}</td>
+
+          <td>
+            <div>
+              <button (click)="reasignar(vendor._id,vendor.username)" class="reasignarboton">Asignar</button>
+            </div>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>

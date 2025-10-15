@@ -1,0 +1,13 @@
+<div class="p-2">
+    <h2>Selecciona un desarrollo</h2>
+    <select [(ngModel)]="selectedUrl">
+        <!-- PASERAS -->
+        <option value="http://localhost:4000/casNov">Desarrollo 1</option>
+        <!-- KAVANDA -->
+        <option value="http://localhost:4001/casNov">Desarrollo 2</option>
+        <!-- RINCON -->
+        <option value="http://localhost:4002/casNov">Desarrollo 3</option>
+    </select>
+    
+    <button (click)=" changeGlobalAPI()">Ir al desarrollo</button>
+</div>
