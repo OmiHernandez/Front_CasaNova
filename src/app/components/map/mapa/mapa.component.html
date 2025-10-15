@@ -1,0 +1,27 @@
+<div class="cont-mapa flex">
+  <div id="imagenMapa" class="map-container" #mapContainer (click)="addPin($event)">
+    <div *ngFor="let pin of pins; let i = index" [id]="pin.id" 
+    [ngClass]="getPinClasses(pin)" [style.left.px]="pin.left" [style.top.px]="pin.top" 
+    (click)="onPinClick(i, $event)">
+</div>
+
+  </div>
+   <div  class="flex-1 mapa-coords txt-c flex-col-c" >
+   
+    <div class="w-100">
+      </div>
+          <div class="w-100" *ngIf="esConfiguracionMapa == false">
+              <button class="w-100 btn-style-1" (click)="guardaMapa()">Guardar Coordenadas</button>
+          </div>
+        <div class="w-100" id="container">
+    </div>
+
+
+    
+     
+  
+   </div>
+    
+
+</div>
+

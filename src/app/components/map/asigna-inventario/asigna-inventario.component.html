@@ -1,0 +1,69 @@
+
+<div  class="txt-c p-1">
+    <div class="title">Asignar un inventario </div>
+    <p>A continuacion se muestra una lista e los inventarios disponibles. Por favor seleccione uno par asignarlo al respectivo lote</p>
+</div>
+
+<div class="plr-5">
+    <div class="loteSelecta p-2">
+        <div class=" flex-sb">
+            <div>
+                <p><strong>Nombre del lote</strong> - {{lote.nombreLote}}</p> 
+            </div>
+            <div>
+                <p>Estado: {{lote.estado}}</p>
+            </div>
+            
+        </div>
+        <div>
+            <div>
+                <p>Inventario: {{lote.inventario}}</p>
+            </div>
+        </div>
+        <br>
+        <div class="flex-sb">
+            <div>
+                <p>Desarrollo: {{lote.desarrollo}}</p>
+            </div>
+            <div>
+                <p>Manzana: {{lote.manzana}}</p>
+            </div>
+            <div>
+                <p>Lote: {{lote.lote}}</p>
+            </div>
+        </div>
+       
+       
+    </div>
+</div>
+
+<div class="txt-c p-2">
+    <p>Seleccione un inventario:</p>
+</div>
+
+<div class="p-1">
+    <table>
+        <thead>
+          <tr>
+            <th>Desarrollo</th>
+            <th>Manzana</th>
+            <th>Lote</th>
+            <th>Acción</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr   *ngFor="let inv of inventarios">
+            <td>{{inv.desarrollo}}</td>
+            <td>{{inv.manzana}}</td>
+            <td>{{inv.lote}}</td>
+
+            <td class="flex-sa iconos">
+                <button class="btn-style-1" (click)="seleccionarInventario(inv._id)">Seleccionar</button>
+            </td>
+           
+          </tr>
+          
+        </tbody>
+      </table>
+</div>
