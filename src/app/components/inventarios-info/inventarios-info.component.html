@@ -1,0 +1,192 @@
+
+<div class="p-1">
+    <h4 class="title">Información</h4>
+</div>
+<div class=" w-100 p-1">
+   
+    <title class="title">Inventario info</title>
+
+    <div class="flex">
+        
+        <div class="w-50">
+            <p>Desarollo</p>
+            <input class="input_style_1  " style="width: 95%;" [(ngModel)]="desarrollo" >
+        </div>
+        <div class="w-50">
+            <p>Manzana</p>
+            <input class="input_style_1  " style="width: 95%;" [(ngModel)]="manzana" >
+        </div>
+    
+
+    </div>
+    
+    <div class=" flex ">
+        
+        
+        <div style="flex:1">
+            <p>Lote</p>
+            <input class="input_style_1 " style="width: 95%;" [(ngModel)]="lote">
+        </div>
+        <div style="flex:1">
+            <p>Prototipo</p>
+            <input class="input_style_1  " style="width: 95%;" [(ngModel)]="prototipo">
+        </div>
+    </div>
+    <br>
+    <div class=" flex ">
+        
+        
+
+        <div class="w-50" >
+            <p *ngIf="obtenerMedidasComoEntero() > 1">Medidas</p>
+            <p *ngIf="obtenerMedidasComoEntero() == 1">Si desea cambiar el tipo de inventario de Vivienda a lote, ingrese las medidas a continuación</p>
+            <input class="input_style_1 " style="width: 95%;" [(ngModel)]="medidas" type="number">
+        </div>
+        <div style="flex:1">
+            <p *ngIf="obtenerMedidasComoEntero() > 1">Precio por M2</p>
+            <p *ngIf="obtenerMedidasComoEntero() == 1">Precio de Vivienda</p>
+            <input class="input_style_1  " style="width: 95%;" [(ngModel)]="precioVenta" type="number">
+        </div>
+
+
+    </div>
+    <br>
+    <div class=" flex ">
+        
+        
+        <div style="flex:1">
+            <p>Descuento</p>
+            <input class="input_style_1  " style="width: 47%;" [(ngModel)]="descuento" type="number">
+        </div>
+
+    </div>
+    <br>
+    <div class="flex-sa">
+        <button class="input_style_1" (click)="modificar()">Modificar</button>
+        <button class="input_style_1" (click)="eliminarinv()">Eliminar</button>
+    </div>
+  
+    
+    <br>
+    <h4 class="title">Colindancias</h4>
+    <div style="text-align: justify;">
+        <p>Presiona enter al terminar de aplicar cambios en un campo para guardar los cambios.</p>
+    </div>
+    <div class=" flex ">
+       
+
+
+      
+        <table>
+            <thead>
+             
+              
+            </thead>
+            <tbody>
+                <th>Manzana</th>
+                <th>Lote</th>
+                <th>Direccion</th>
+                <th>Metros</th>
+                <th>Opciones</th>
+              <!-- AQUI SE TIENE MANZANA Y LOTE, EN CASO DE CAMBIAR, LA MANZANA DE CAMBIA A COLINDA CON CALLE Y EL LOTE TOMA
+               EL NOMBRE. nombreCalle debe cambiar a Asigne un nombre y presione enter-->
+
+            <tr *ngFor="let colindancia of colindancias" >
+                <ng-container *ngIf="colindancia.manzanac !== 'Colinda con calle'">
+                   
+                    <td><input #manzanac type="text" class="w-100" id="{{colindancia._id}}" value="{{colindancia.manzanac}}" (keyup.enter)="onEnter(manzanac.value,'Manzana',manzanac.id)">
+                        
+                    </td>
+                    <td><input #lotec type="text" class="w-100" id="{{colindancia._id}}" value="{{colindancia.lotec}}" (keyup.enter)="onEnter(lotec.value,'Lote',lotec.id)">
+                    </td>
+                    <td>
+                        <select #direccionc  class="w-100" (change)="onSelectChange($event,colindancia._id)">
+                            <option value="{{colindancia.direccion}}"selected>{{colindancia.direccion}}</option>
+                            <option value="Norte">Norte</option>  
+                            <option value="Sur">Sur</option>
+                            <option value="Este">Este</option>
+                            <option value="Oeste">Oeste</option>
+                            <option value="Noroste">Noreste</option>
+                            <option value="Sureste">Sureste</option>
+                            <option value="Suroeste">Suroeste</option>
+                        </select>
+                    </td>
+                    <td><input #metroc id="{{colindancia._id}}" type="text" class="w-100" value="{{colindancia.metros}}" (keyup.enter)="onEnter(metroc.value,'Metro',metroc.id)"></td>
+                    <td> 
+                        <button (click)="cambiarColindaConCalle(lotec,manzanac)">Cambiar a colinda con calle</button>
+                    </td>
+                </ng-container>
+                  
+                </tr>
+            </tbody>
+        </table>
+
+        
+       
+
+    </div>
+ 
+    <br><br>
+
+
+    <div class=" flex ">
+       
+
+
+      
+        <table>
+            <thead>
+             
+              
+            </thead>
+            <tbody>
+                <!-- AQUI LA MANZANA VA A TENER COLINDA CON CALLE Y VA A ESTAR OCULTO PERO
+                     CUANDO SE CAMBIE A MANZANA Y LOTE SE DEBEN VACIAR MANZANA Y CALLE Y CAMBIAR
+                     EL CAMPO nombreCalle a NoCalle-->
+                <!-- <th>Manzana</th> -->
+               <th>Calle</th>
+                <th>Direccion</th>
+                <th>Metros</th>
+                <th>Opciones</th>
+              
+
+            <tr *ngFor="let colindancia2 of colindancias" >
+
+                <ng-container *ngIf="colindancia2.manzanac === 'Colinda con calle'">
+                      
+                    <td><input #lotec type="text" class="w-100" id="{{colindancia2._id}}" value="{{colindancia2.lotec}}" (keyup.enter)="onEnter(lotec.value,'Lote',lotec.id)">
+                    </td>
+                    <td>
+                        <select #direccionc  class="w-100" (change)="onSelectChange($event,colindancia2._id)">
+                            <option value="{{colindancia2.direccion}}"selected>{{colindancia2.direccion}}</option>
+                            <option value="Norte">Norte</option>  
+                            <option value="Sur">Sur</option>
+                            <option value="Este">Este</option>
+                            <option value="Oeste">Oeste</option>
+                            <option value="Noroste">Noreste</option>
+                            <option value="Sureste">Sureste</option>
+                            <option value="Suroeste">Suroeste</option>
+                        </select>
+                    </td>
+                    <td><input #metroc id="{{colindancia2._id}}" type="text" class="w-100" value="{{colindancia2.metros}}" (keyup.enter)="onEnter(metroc.value,'Metro',metroc.id)"></td>
+                    <td> 
+                        <button (click)="cambiarAManzanaYLote(colindancia2._id)">Cambiar a colinda con lote y manzana</button>
+                    </td>
+                </ng-container>
+                  
+                </tr>
+            </tbody>
+        </table>
+
+        
+       
+
+    </div>
+ 
+    
+</div>
+
+
+
+
+
