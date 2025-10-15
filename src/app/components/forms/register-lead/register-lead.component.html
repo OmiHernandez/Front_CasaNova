@@ -1,0 +1,40 @@
+<form [formGroup]="RegisterLeadForm" (ngSubmit)="onSubmit()" class="registerLead">
+    <p class="title">Registrar lead</p>
+    <br>
+    <div>
+        <p>Nombre del lead</p>
+        <input class="input_style_1 w-75" formControlName="nombreLead">
+    </div>
+    <br>
+    <div>
+        <p>Origen del lead</p>
+        <select class="input_style_1 w-75" formControlName="origenLead">
+            <option *ngFor="let option of origenLeadOptions" [value]="option">{{ option }}</option>
+        </select>
+    </div>
+    <br>
+    <div>
+        <p>Correo electrónico</p>
+        <input class="input_style_1 w-75" formControlName="correoElectronico" type="email">
+    </div>
+    <br>
+    
+    <div>
+        <p>Número</p>
+        <input class="input_style_1 w-75" formControlName="numero" type="number">
+    </div>
+    <br>
+
+    <div>
+        <p>Notas u observaciones</p>
+        <input class="input_style_1 w-75" formControlName="nota" type="text">
+    </div>
+    <br>
+
+
+    
+    <br>
+    <div style="display: flex; justify-content: space-between;" class="w-75">
+        <button type="submit" class="btn-style-1">Registrar lead</button>
+    </div>
+</form>
