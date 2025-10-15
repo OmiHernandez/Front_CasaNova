@@ -1,0 +1,44 @@
+<div class="verLeads">
+  <p class="title">Contrato generado, pendientes de firma</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Desarrollo</th>
+        <th>Manzana</th>
+        <th>Lote</th>
+        <th>Nombre</th>
+        <th>Origen</th>
+        <th>Correo</th>
+        <th>Numero</th>
+        <th>Modelo</th>
+        <th>Nota</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Leads of ListaLeads">
+        <td>{{ Leads.desarrollo }}</td>
+        <td>{{ Leads.manzana }}</td>
+        <td>{{ Leads.lote }}</td>
+        <td>{{ Leads.leadName }}</td>
+        <td>{{ Leads.leadOrigin }}</td>
+        <td>{{ Leads.leadEmail }}</td>
+        <td>{{ Leads.leadNumber }}</td>
+        <td>{{ Leads.leadModel }}</td>
+        <td>{{ Leads.nota }}</td>
+        <td>
+          <div class="contenedorb">
+            <button class="botonaccion" (click)="avanzarlead(Leads._id)">Contrato firmado</button>
+          </div>
+        </td>
+        <td>
+          <div class="contenedorb">
+            <button class="botonaccion" (click)="regresarLead(Leads._id)">Deshacer accion</button>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
