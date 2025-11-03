@@ -67,6 +67,26 @@ export class HeaderComponent {
   hacerSeleccion(seleccion:string){
    
     this.headerControl.setHeaderControl(seleccion);
+
+    switch (seleccion) {
+      case 'Dashboard':
+        this.router.navigate(['/dashboard']);
+        break;
+      case 'Leads':
+        this.router.navigate(['/dashboard/verLeads']);
+        break;
+      case 'Estadisticas':
+        this.router.navigate(['/dashboard/Estadisticasglobales']);
+        break;
+      case 'Administrar':
+        this.router.navigate(['/dashboard/listaUsuarios']);
+        break;
+      case 'Inventarios':
+        this.router.navigate(['/dashboard/verInventario']);
+        break;
+      default:
+        this.router.navigate(['/dashboard']);
+    }
   }
 
   logout(){

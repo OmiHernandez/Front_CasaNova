@@ -63,6 +63,7 @@ import { EtapasPorAsesorPorMesComponent } from './components/graficas/etapas-por
 import { EtapaspordesarrolloComponent } from './components/graficas/etapaspordesarrollo/etapaspordesarrollo.component';
 import { UploadmapaComponent } from './components/uploadmapa/uploadmapa.component';
 import { SeleccionarDesarrolloComponent } from './components/seleccionar-desarrollo/seleccionar-desarrollo.component';
+import { DashboardHomeComponent } from './components/dashboard/dashboard-home/dashboard-home.component';
 
 
 @NgModule({
@@ -117,7 +118,8 @@ import { SeleccionarDesarrolloComponent } from './components/seleccionar-desarro
        EtapasPorAsesorPorMesComponent,
        EtapaspordesarrolloComponent,
        UploadmapaComponent,
-       SeleccionarDesarrolloComponent
+       SeleccionarDesarrolloComponent,
+       DashboardHomeComponent
 
   ],
   imports: [

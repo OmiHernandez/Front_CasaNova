@@ -29,11 +29,13 @@ import { NotarialfirmadaComponent } from './components/leads/notarialfirmada/not
 import { ReportesComponent } from './components/pipeline/reportes/reportes.component';
 import { EstadisticasglobalesComponent } from './components/graficas/estadisticasglobales/estadisticasglobales.component';
 import { SeleccionarDesarrolloComponent } from './components/seleccionar-desarrollo/seleccionar-desarrollo.component';
+import { DashboardHomeComponent } from './components/dashboard/dashboard-home/dashboard-home.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/login',pathMatch:'full'},
   {path:'login',component:LoginFormComponent},
   {path:'dashboard',component:DashboardComponent,children: [
+    { path: '', component: DashboardHomeComponent },
     { path: 'registerLead', component: RegisterLeadComponent },
     { path: 'verLeads',component:VerLeadsComponent},
     { path: 'misLeads',component:MisLeadsComponent},

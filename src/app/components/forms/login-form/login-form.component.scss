@@ -1,76 +1,95 @@
-.loginForm{
-    // width: 65vw;
-    width: 100%;
-    height: 100vh;
-    
-    display: flex;
-    // margin: 5rem 0rem;
-   
+.loginForm{ 
+  // width: 65vw; 
+  width: 100%; 
+  height: 100vh; 
+  display: flex; 
+  // margin: 5rem 0rem; 
 }
 
+.lF_form{ 
+  width: 30%; 
+  display: flex; 
+  flex-direction: column; 
+  font-size: 20px; 
+  color: var(--gris); 
+  background-color: var(--blanco); 
+  text-align: center; 
+  margin-top: 20vh; 
+} 
 
-.lF_form{
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    
-    font-size: 20px;
-    color: var(--gris);
-    background-color: var(--blanco);
-    text-align: center;
-    margin-top: 30vh;
+.lF_form input,
+.lF_form select {
+    width: 80%;
+    margin: 10px 0;
+    padding: 20px 16px;
+    border-radius: 8px;
+    border: 1.5px solid #e0e0e0;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.lF_form input{
-    padding: 2px;
-    border: none;
+.lF_form input:focus,
+.lF_form select:focus {
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(196, 20, 27, 0.3);
     outline: none;
+    transform: scale(1.02);
+}
+
+.lF_form input::placeholder {
+    color: #999;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
 }
 
 
-.lF_img{
-  flex: 1;
-  width: 75%;
-  background-color: var(--azul-oscuro);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.lF_form input:hover,
+.lF_form select:hover {
+    background-color: #fefefe;
+    border-color: #dcdcdc;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
 
+.lF_img{ 
+  flex: 1; 
+  width: 100%; 
+  background-color: #b3b1b2; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+} 
 
-.lF_img img {
-    width: 50%;
-   
-}
+.lF_img img { 
+  width: 50%; 
+} 
 
+.ln-white{ 
+  outline: none; 
+  border: none; 
+  color: var(gris); 
+  background-color: rgb(233, 233, 233); 
+  padding: 5px !important; 
+  transition: all ease 0.3s; 
+  outline: 1px solid var(--gris-claro)!important; 
+} 
 
+.ln-white:focus{ 
+  outline: 1px solid rgb(32, 74, 180) !important; 
+} 
 
+.lF_button button { 
+  background-color: #f3c823; 
+  width: 80%;
+  padding:12px 25px; 
+  border-radius: 8px;
+  border: none; 
+} 
 
-.ln-white{
-    outline: none;
-    border: none;
-    color: var(gris);
-    background-color: rgb(233, 233, 233);
-    padding: 5px !important;
-    transition: all ease 0.3s;
-    outline: 1px solid var(--gris-claro)!important;
-}
-
-.ln-white:focus{
-    outline: 1px solid rgb(32, 74, 180) !important;
-}
-
-
-
-.lF_button button {
-    background-color: var(--naranja);
-    padding:5px 25px;
-    border: none;
-}
-
-
-.lF_button button:hover {
-    background-color: var(--naranja-oscuro);
-    color: var(--blanco);
-    cursor: pointer;
+.lF_button button:hover { 
+  background-color: #ef9002; 
+  color: var(--blanco); 
+  cursor: pointer; 
 }

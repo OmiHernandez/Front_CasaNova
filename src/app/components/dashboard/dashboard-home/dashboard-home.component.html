@@ -1,0 +1,32 @@
+<div class="dashboard-home">
+  <h2>Panel Principal</h2>
+
+  <div class="quick-links" *ngIf="cred">
+    <div *ngIf="leads">
+        <div class="card"  (click)="hacerSeleccion('Leads')">
+            <i class="fas fa-user-plus"></i>
+            <span>Leads</span>
+        </div>
+    </div>
+
+    <div class="card" [routerLink]="['/dashboard/Estadisticasglobales']" *ngIf="estadisticas">
+      <i class="fas fa-chart-line"></i>
+      <span (click)="hacerSeleccion('Estadisticas')">Estadísticas</span>
+    </div>
+
+    <div *ngIf="administrar">
+        <div class="card" (click)="hacerSeleccion('Administrar')">
+            <i class="fas fa-users-cog"></i>
+            <span>Administrar</span>
+        </div>
+    </div>
+
+    <div *ngIf="inventarios">
+        <div class="card" (click)="hacerSeleccion('Inventarios')">
+            <i class="fas fa-boxes"></i>
+            <span>Inventario</span>
+        </div>
+    </div>
+  </div>
+
+</div>
