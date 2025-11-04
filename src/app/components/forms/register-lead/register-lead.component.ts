@@ -40,7 +40,7 @@ export class RegisterLeadComponent implements OnInit {
 
   origenLeadOptions: string[] = [
     'RECOMENDACIÓN',
-    'WATS APP y FACEBOOK',
+    'WHATSAPP y FACEBOOK',
     'REDES SOCIALES',
     'VISITA AL DESARROLLO',
     'ESPECTACULARES',
