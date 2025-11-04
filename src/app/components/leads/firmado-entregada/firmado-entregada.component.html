@@ -50,13 +50,13 @@
 
         <td>
           <div class="contenedorb">
-            <button class="botonaccion" (click)="createPdfVivienda('direccion', Leads.desarrollo, Leads.manzana, Leads.lote, 'interior', 'nombre')">Acta de entrega vivienda</button>
+            <button class="botonaccion" (click)="createPdfVivienda(Leads._id, 'direccion', Leads.desarrollo, Leads.manzana, Leads.lote, 'interior', 'nombre')">Acta de entrega vivienda</button>
           </div>
         </td>
 
         <td>
           <div class="contenedorb">
-            <button class="botonaccion" (click)="createPdfLote('direccion', Leads.desarrollo, Leads.manzana, Leads.lote, 'interior', 'nombre')">Acta de entrega Lote</button>
+            <button class="botonaccion" (click)="createPdfLote(Leads._id, 'direccion', Leads.desarrollo, Leads.manzana, Leads.lote, 'interior', 'nombre')">Acta de entrega Lote</button>
           </div>
         </td>
 
