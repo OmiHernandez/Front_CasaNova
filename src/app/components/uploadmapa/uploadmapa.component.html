@@ -1,18 +1,8 @@
 <div class="form-group col-12 ">
-    <input type="text" 
-    id="fileName" 
-    [(ngModel)]="fileName" 
-    placeholder="Ingrese el nombre del mapa" 
-    class="form-control" />
+    <input type="text" id="fileName" [(ngModel)]="fileName" placeholder="Ingrese el nombre del mapa"
+        class="form-control" />
 </div>
-
 <div class="form-group col-12">
-<input type="file" 
-    id="file" 
-    #userPhoto 
-    (change)="onFileSelected($event)" 
-    name="image" 
-    autocomplete="off" />
-   </div>
-
-   <button (click)="crearArchivo()" class="btn btn-primary">Crear</button>
+    <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+</div>
+<button (click)="crearArchivo()" class="btn btn-primary">Crear</button>

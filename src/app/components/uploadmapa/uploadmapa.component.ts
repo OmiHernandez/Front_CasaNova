@@ -20,93 +20,76 @@ import { Router } from '@angular/router';
 })
 export class UploadmapaComponent {
 
-
-  fileName:string= ''
+  fileName: string = '';
   selectedFile: File | null = null;
 
-  firebaseConfig = {
-    apiKey: "AIzaSyCSPLvaNKKOLrOHDtFk35OYdYRkXmgRNQQ",
-    authDomain: "dhs-maps-e4002.firebaseapp.com",
-    projectId: "dhs-maps-e4002",
-    storageBucket: "dhs-maps-e4002.appspot.com",
-    messagingSenderId: "730076217656",
-    appId: "1:730076217656:web:2bc4a3c8e57b2a164401cd"
-  };
-  app = initializeApp(this.firebaseConfig);
-  
-  
-  fb;
-  downloadURL: Observable<string>;
-  constructor(private router:Router ,private mapa:MapasService,private Api: UploadmapService/*, private storage: AngularFireStorage*/) {}
+  // ELIMINAMOS LA CONFIGURACIÓN DE FIREBASE
+  constructor(private router: Router, private mapa: MapasService) { }
 
   ngOnInit() {
   }
 
   onFileSelected(event) {
     const file = event.target.files[0];
-    this.selectedFile = file
-   
+    this.selectedFile = file;
   }
 
   crearArchivo() {
+    if (this.selectedFile && this.fileName != '') {
+      // Convertir archivo a base64
+      const reader = new FileReader();
+      
+      reader.onload = (e: any) => {
+        const base64Image = e.target.result;
+        
+        // Crear objeto mapa con la imagen en base64
+        var mapa = {
+          nombreMapa: this.fileName,
+          urlMapa: base64Image, // Ahora es base64 en lugar de URL de Firebase
+        };
 
-    if (this.selectedFile && this.fileName!='') {
-      const storage = getStorage();
-      const storageRef = ref(storage, this.fileName);
-  
-      let metadata = {
-        contentType: 'image/jpeg'
+        // Enviar al servicio
+        this.mapa.addMapa(mapa).subscribe({
+          next: (data: any) => {
+            Swal.fire({
+              title: '¡Éxito!',
+              text: 'Mapa subido correctamente',
+              icon: 'success',
+              confirmButtonText: 'Aceptar'
+            });
+            
+            // Navegar a la vista del mapa
+            this.router.navigate(['/dashboard/mapa', data._id, JSON.stringify(data)]);
+          },
+          error: (error) => {
+            console.error('Error al subir mapa:', error);
+            Swal.fire({
+              title: 'Ha ocurrido un error inesperado al subir su mapa',
+              icon: 'warning',
+              confirmButtonText: 'Aceptar',
+            });
+          }
+        });
       };
       
-
-      const uploadTask = uploadBytesResumable(storageRef, this.selectedFile, metadata);
-
-// Listen for state changes, errors, and completion of the upload.
-uploadTask.on('state_changed',
-  (snapshot) => {
-    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-    switch (snapshot.state) {
-      case 'paused':
-        console.log('Upload is paused');
-        break;
-      case 'running':
-        console.log('Upload is running');
-        break;
-    }
-  }, 
-  (error) => {
-    Swal.fire({
-      title: 'Ha ocurrido un error inesperado al subir su mapa',
-      icon: 'warning',
-      confirmButtonText: 'Aceptar',
-    });
-  }, 
-  () => {
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      console.log('File available at', downloadURL);
-      var mapa = {
-        nombreMapa:this.fileName,
-        urlMapa:downloadURL,
-
-      }
-      this.mapa.addMapa(mapa).subscribe(data=>{
-        this.router.navigate(['/dashboard/mapa',mapa.nombreMapa,JSON.stringify(mapa)]);
-
-      });
-    });
-    
-  }
-);
-    }
-    else{
+      reader.onerror = (error) => {
+        console.error('Error al leer el archivo:', error);
+        Swal.fire({
+          title: 'Error al procesar la imagen',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+      };
+      
+      // Leer el archivo como Data URL (base64)
+      reader.readAsDataURL(this.selectedFile);
+      
+    } else {
       Swal.fire({
-        title: 'Asegurese de elegir un mapa y elegir un nombre valido',
+        title: 'Asegúrese de elegir un mapa y elegir un nombre válido',
         icon: 'warning',
         confirmButtonText: 'Aceptar',
       });
     }
   }
-
 }
