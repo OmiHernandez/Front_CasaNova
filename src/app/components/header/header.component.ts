@@ -8,6 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  isMobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
   // Tipos de usuario
   // 0 - No se ha logueadod
   // 1 - Administrador
@@ -37,7 +42,7 @@ export class HeaderComponent {
     var tipo = localStorage.getItem('usertype')
     
     console.log(tipo, 'tipoheader')
-    if (tipo=="Administración"){//
+    if (tipo=="Administración"){
       this.leads = true
       this.estadisticas = true
       this.administrar = true
@@ -49,7 +54,7 @@ export class HeaderComponent {
       this.inventarios = true
       return
     }
-    if (tipo=="Ventas"){//
+    if (tipo=="Ventas"){
       this.leads = true
       return
     }
@@ -57,7 +62,7 @@ export class HeaderComponent {
       this.leads = true
       return
     }
-    if (tipo=="Construccion"){//
+    if (tipo=="Construccion"){
       this.leads = true
       return
     }
@@ -95,12 +100,5 @@ export class HeaderComponent {
     this.router.navigate(['/login']);
     
   }
-
-
-
-
-
-
-  
 
 }

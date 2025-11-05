@@ -1,10 +1,25 @@
 .dashboard{
     display: flex;
     height: 100vh;
+    position: relative;
 }
 
 
 .dashboard-workspace{
     width: 100%;
+    transition: margin-left 0.3s ease-in-out;
 }
 
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: row;
+    }
+
+    .dashboard-workspace {
+        margin-left: 0;
+    }
+
+    .dashboard-workspace.sidebar-closed {
+        margin-left: 0;
+    }
+}

@@ -1,41 +1,50 @@
-<div class="header">
+<div class="header" [ngStyle]="{'justify-content': cred ? 'space-between' : 'center'}">
+
+    <div *ngIf="cred" class="hamburger" (click)="toggleMobileMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
     <div class="h_logo">
         <img src="../../../assets/img/logo_blanco.png">
     </div>
 
-    <div class="h_menu" *ngIf="cred">
-        <div class="h_menu_opt">
-            <p (click)="hacerSeleccion('Dashboard')">Dashboard</p>
+    <div class="h_menu" [ngClass]="{'mobile-menu-open': isMobileMenuOpen}">
+        <div *ngIf="cred">
+            <div class="h_menu_opt">
+                <p (click)="hacerSeleccion('Dashboard')">Dashboard</p>
+            </div>
+            <div class="h_menu_opt" *ngIf="leads">
+                <p (click)="hacerSeleccion('Leads')">Leads</p>
+            </div>
+            <div class="h_menu_opt" [routerLink]="['/dashboard/Estadisticasglobales']" *ngIf="estadisticas">
+                <p (click)="hacerSeleccion('Estadisticas')">Estadisticas</p>
+            </div>
+            <div class="h_menu_opt" *ngIf="administrar">
+                <p (click)="hacerSeleccion('Administrar')">Administrar</p>
+            </div>
+            <div class="h_menu_opt" *ngIf="inventarios">
+                <p (click)="hacerSeleccion('Inventarios')">Inventarios</p>
+            </div>
         </div>
-        <div class="h_menu_opt" *ngIf="leads">
-            <p (click)="hacerSeleccion('Leads')">Leads</p>
-        </div>
-        <div class="h_menu_opt" [routerLink]="['/dashboard/Estadisticasglobales']" *ngIf="estadisticas">
-            <p (click)="hacerSeleccion('Estadisticas')">Estadisticas</p>
-        </div>
-        <div class="h_menu_opt" *ngIf="administrar">
-            <p (click)="hacerSeleccion('Administrar')">Administrar</p>
-        </div>
-        <div class="h_menu_opt" *ngIf="inventarios">
-            <p (click)="hacerSeleccion('Inventarios')">Inventarios</p>
-        </div>
-    </div>
 
-    <div class="h_menu" *ngIf="userType == 2">
-        <div class="h_menu_opt">
-            <p>Tesorero</p>
+        <div *ngIf="userType == 2">
+            <div class="h_menu_opt">
+                <p>Tesorero</p>
+            </div>
         </div>
-    </div>
 
-    <div class="h_menu" *ngIf="userType == 3">
-        <div class="h_menu_opt">
-            <p>Tecnico</p>
+        <div *ngIf="userType == 3">
+            <div class="h_menu_opt">
+                <p>Tecnico</p>
+            </div>
         </div>
-    </div>
 
-    <div class="h_menu" *ngIf="userType == 4">
-        <div class="h_menu_opt">
-            <p>Leads</p>
+        <div *ngIf="userType == 4">
+            <div class="h_menu_opt">
+                <p>Leads</p>
+            </div>
         </div>
     </div>
 

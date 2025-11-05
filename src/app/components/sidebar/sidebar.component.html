@@ -1,127 +1,137 @@
-<div class="sidebar" *ngIf="seleccion.includes('Administrar')">
-    <div class="sidebar_opt" [routerLink]="['/dashboard/listaUsuarios']">
-        <div><i class="fa-solid fa-users" ></i></div>
-        <div>Ver usuarios</div>
+<div *ngIf="showSidebar">
+  <div class="sidebar-container" [class.closed]="!isOpen">
+    <div class="hamburger mobile-hamburger" (click)="toggleSidebar()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
     </div>
-    <div class="sidebar_opt" [routerLink]="['/dashboard/registerForm']">
-        <div><i class="fa-solid fa-user-plus" ></i></div>
-        <div>Añadir usuario</div>
+    <div class="sidebar-content">
+      <div class="sidebar" *ngIf="seleccion.includes('Administrar')">
+          <div class="sidebar_opt" [routerLink]="['/dashboard/listaUsuarios']">
+              <div><i class="fa-solid fa-users" ></i></div>
+              <div>Ver usuarios</div>
+          </div>
+          <div class="sidebar_opt" [routerLink]="['/dashboard/registerForm']">
+              <div><i class="fa-solid fa-user-plus" ></i></div>
+              <div>Añadir usuario</div>
+          </div>
+          <!--<div class="sidebar_opt" >
+              <div><i class="fa-solid fa-user-pen"></i></div>
+              <div>Editar usuario</div>
+          </div>
+          <div class="sidebar_opt">
+              <div><i class="fa-solid fa-user-xmark"></i></div>
+              <div>Eliminar usuario</div>
+          </div>-->
+          
+      </div>
+
+      <div class="sidebar" *ngIf="seleccion.includes('Leads')">
+          <div *ngIf="esventas">
+              <!-- <div >Ventas</div> -->
+          <div class="sidebar_opt" [routerLink]="['/dashboard/registerLead']">
+              <i class="fa-solid fa-arrow-up-right-dots"></i>
+              <div >Registrar lead</div>
+          </div>
+          <div class="sidebar_opt" [routerLink]="['/dashboard/misLeads']">
+              <i class="fa-regular fa-address-card" ></i>
+              <div >Mis Leads</div>
+          </div>
+
+      </div>
+          
+             
+             <!--  <div >Administración</div>  --> 
+          
+
+          <div *ngIf="essuperventas" class="sidebar_opt" [routerLink]="['/dashboard/verLeads']">
+              <i class="fa-regular fa-address-card" ></i>
+              <div >Status de leads</div>
+          </div>
+
+          <div *ngIf="esventas" class="sidebar_opt" [routerLink]="['/dashboard/avanzarleads']">
+              <i class="fa-regular fa-address-card" ></i>
+              <div >Leads</div>
+          </div>
+
+          <div *ngIf="esventas" class="sidebar_opt" [routerLink]="['/dashboard/prospectos']">
+              <div><i class="fa-solid fa-file-invoice" ></i></div>
+              <div>Prospectos</div>
+          </div>
+
+          <div *ngIf="essuperventas">
+
+
+          
+
+          <div class="sidebar_opt" [routerLink]="['/dashboard/apartado']">
+              <div><i class="fa-solid fa-file-invoice" ></i></div>
+              <div>Cotización</div>
+          </div>
+
+          <div class="sidebar_opt" [routerLink]="['/dashboard/generarcontrato']">
+              <div><i class="fa-solid fa-file-invoice" ></i></div>
+              <div>Generación de contrato</div>
+          </div>
+
+          <div class="sidebar_opt" [routerLink]="['/dashboard/contratatofirmado']">
+              <div><i class="fa-solid fa-file-signature" ></i></div>
+              <div>Firma</div>
+          </div>
+
+          <div class="sidebar_opt" [routerLink]="['/dashboard/notarial']">
+              <div><i class="fa-solid fa-file-signature" ></i></div>
+              <div>Generar Instrucción Notarial</div>
+          </div>
+
+          <div class="sidebar_opt" [routerLink]="['/dashboard/notarialfirmada']">
+              <div><i class="fa-solid fa-file-signature" ></i></div>
+              <div>Firmar Instrucción Notarial</div>
+          </div>
+
+      </div>
+
+      <div *ngIf="esconstruccion" >
+
+          <div class="sidebar_opt" [routerLink]="['/dashboard/firmadoentregado']">
+              <div><i class="fa-solid fa-file-signature" ></i></div>
+              <div>Entrega</div>
+          </div>
+          <div class="sidebar_opt" [routerLink]="['/dashboard/postVenta']">
+              <div><i class="fa-solid fa-paste" ></i></div>
+              <div>Post-venta</div>
+          </div>
+          <div class="sidebar_opt" [routerLink]="['/dashboard/reportes']">
+              <div><i class="fa-solid fa-paste" ></i></div>
+              <div>Reportes</div>
+          </div>
+
+      </div>
+              
+          
+          
+      </div>
+
+      <div class="sidebar" *ngIf="seleccion.includes('Inventarios')">
+          <div class="sidebar_opt" [routerLink]="['/dashboard/addInventory']">
+              <i class="fa-solid fa-arrow-up-right-dots"></i>
+              <div >Alta de inventario</div>
+          </div>
+          <div class="sidebar_opt" [routerLink]="['/dashboard/verInventario']">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <div >Ver Inventario</div>
+          </div>
+          <div class=" enf" >
+              
+              <div >Mapas</div>
+          </div>
+          <div class="sidebar_opt" [routerLink]="['/dashboard/menuMapas']">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <div >Generar Mapa</div>
+          </div>
+          
+          
+      </div>
     </div>
-    <!--<div class="sidebar_opt" >
-        <div><i class="fa-solid fa-user-pen"></i></div>
-        <div>Editar usuario</div>
-    </div>
-    <div class="sidebar_opt">
-        <div><i class="fa-solid fa-user-xmark"></i></div>
-        <div>Eliminar usuario</div>
-    </div>-->
-    
+  </div>
 </div>
-
-<div class="sidebar" *ngIf="seleccion.includes('Leads')">
-    <div *ngIf="esventas">
-        <!-- <div >Ventas</div> -->
-    <div class="sidebar_opt" [routerLink]="['/dashboard/registerLead']">
-        <i class="fa-solid fa-arrow-up-right-dots"></i>
-        <div >Registrar lead</div>
-    </div>
-    <div class="sidebar_opt" [routerLink]="['/dashboard/misLeads']">
-        <i class="fa-regular fa-address-card" ></i>
-        <div >Mis Leads</div>
-    </div>
-
-</div>
-    
-       
-       <!--  <div >Administración</div>  --> 
-    
-
-    <div *ngIf="essuperventas" class="sidebar_opt" [routerLink]="['/dashboard/verLeads']">
-        <i class="fa-regular fa-address-card" ></i>
-        <div >Status de leads</div>
-    </div>
-
-    <div *ngIf="esventas" class="sidebar_opt" [routerLink]="['/dashboard/avanzarleads']">
-        <i class="fa-regular fa-address-card" ></i>
-        <div >Leads</div>
-    </div>
-
-    <div *ngIf="esventas" class="sidebar_opt" [routerLink]="['/dashboard/prospectos']">
-        <div><i class="fa-solid fa-file-invoice" ></i></div>
-        <div>Prospectos</div>
-    </div>
-
-    <div *ngIf="essuperventas">
-
-
-    
-
-    <div class="sidebar_opt" [routerLink]="['/dashboard/apartado']">
-        <div><i class="fa-solid fa-file-invoice" ></i></div>
-        <div>Cotización</div>
-    </div>
-
-    <div class="sidebar_opt" [routerLink]="['/dashboard/generarcontrato']">
-        <div><i class="fa-solid fa-file-invoice" ></i></div>
-        <div>Generación de contrato</div>
-    </div>
-
-    <div class="sidebar_opt" [routerLink]="['/dashboard/contratatofirmado']">
-        <div><i class="fa-solid fa-file-signature" ></i></div>
-        <div>Firma</div>
-    </div>
-
-    <div class="sidebar_opt" [routerLink]="['/dashboard/notarial']">
-        <div><i class="fa-solid fa-file-signature" ></i></div>
-        <div>Generar Instrucción Notarial</div>
-    </div>
-
-    <div class="sidebar_opt" [routerLink]="['/dashboard/notarialfirmada']">
-        <div><i class="fa-solid fa-file-signature" ></i></div>
-        <div>Firmar Instrucción Notarial</div>
-    </div>
-
-</div>
-
-<div *ngIf="esconstruccion" >
-
-    <div class="sidebar_opt" [routerLink]="['/dashboard/firmadoentregado']">
-        <div><i class="fa-solid fa-file-signature" ></i></div>
-        <div>Entrega</div>
-    </div>
-    <div class="sidebar_opt" [routerLink]="['/dashboard/postVenta']">
-        <div><i class="fa-solid fa-paste" ></i></div>
-        <div>Post-venta</div>
-    </div>
-    <div class="sidebar_opt" [routerLink]="['/dashboard/reportes']">
-        <div><i class="fa-solid fa-paste" ></i></div>
-        <div>Reportes</div>
-    </div>
-
-</div>
-        
-    
-    
-</div>
-
-<div class="sidebar" *ngIf="seleccion.includes('Inventarios')">
-    <div class="sidebar_opt" [routerLink]="['/dashboard/addInventory']">
-        <i class="fa-solid fa-arrow-up-right-dots"></i>
-        <div >Alta de inventario</div>
-    </div>
-    <div class="sidebar_opt" [routerLink]="['/dashboard/verInventario']">
-        <i class="fa-solid fa-boxes-stacked"></i>
-        <div >Ver Inventario</div>
-    </div>
-    <div class=" enf" >
-        
-        <div >Mapas</div>
-    </div>
-    <div class="sidebar_opt" [routerLink]="['/dashboard/menuMapas']">
-        <i class="fa-solid fa-map-location-dot"></i>
-        <div >Generar Mapa</div>
-    </div>
-    
-    
-</div>
-

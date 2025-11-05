@@ -93,3 +93,58 @@
   color: var(--blanco); 
   cursor: pointer; 
 }
+
+/* Media Queries for mobile responsiveness */
+@media (max-width: 768px) {
+  .loginForm {
+    flex-direction: column; /* Stack form and image vertically */
+    height: auto; /* Allow content to dictate height */
+  }
+
+  .lF_form {
+    width: 90%; /* Make form wider on smaller screens */
+    margin: 5vh auto 2vh auto; /* Center form and adjust top margin */
+    font-size: 18px; /* Slightly smaller font size */
+  }
+
+  .lF_form input,
+  .lF_form select,
+  .lF_button button {
+    width: 90%; /* Make inputs, select, and button full width */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .lF_img {
+    height: 30vh; /* Reduce height of the image container */
+    width: 90%; /* Make image container wider */
+    margin: 0 auto; /* Center image container */
+  }
+
+  .lF_img img {
+    width: 70%; /* Adjust image size */
+  }
+}
+
+@media (max-width: 480px) {
+  .lF_form {
+    width: 95%; /* Even wider on very small screens */
+    margin-top: 2vh; /* Further reduce top margin */
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .lF_form input,
+  .lF_form select,
+  .lF_button button {
+    width: 95%; /* Full width for inputs, select, and button */
+  }
+
+  .lF_img {
+    height: 20vh; /* Further reduce image container height */
+    width: 95%; /* Even wider image container */
+  }
+
+  .lF_img img {
+    width: 80%; /* Adjust image size */
+  }
+}

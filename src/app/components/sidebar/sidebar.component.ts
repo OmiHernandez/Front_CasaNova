@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable,Subject } from 'rxjs';import { HeaderControlsService } from 'src/app/services/header-controls.service';
+import { SidebarControlsService } from 'src/app/services/sidebar-controls.service';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,7 +25,24 @@ export class SidebarComponent {
 
   estecnico:boolean = false
 
-  constructor(private headerControl:HeaderControlsService){}
+  isOpen = true;
+  showSidebar = true;
+
+  constructor(private headerControl:HeaderControlsService, private sidebarControls: SidebarControlsService, private router: Router){
+    this.sidebarControls.toggle$.subscribe(() => {
+      this.isOpen = !this.isOpen;
+    });
+
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      if (event.url === '/dashboard' || event.url === '/dashboard/Estadisticasglobales') {
+        this.showSidebar = false;
+      } else {
+        this.showSidebar = true;
+      }
+    });
+  }
 
   ngOnInit(){
     this.headerControl.headerControl$.subscribe((selec:any)=>{
@@ -63,6 +83,10 @@ export class SidebarComponent {
       this.esconstruccion =true
       return
     }
+  }
+
+  toggleSidebar() {
+    this.sidebarControls.toggleSidebar();
   }
 
 }

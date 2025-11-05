@@ -50,3 +50,42 @@
     font-weight: 600;
     color: #444;
 }
+
+@media (max-width: 768px) {
+    .dashboard-home {
+        padding: 1rem; /* Reduce padding on smaller screens */
+        padding-top: 10vh; /* Adjust top padding */
+    }
+
+    .dashboard-home h2 {
+        font-size: 1.5rem; /* Smaller font size for headings */
+    }
+
+    .quick-links {
+        gap: 1rem; /* Reduce gap between cards */
+        margin-top: 2rem; /* Adjust top margin */
+    }
+
+    .card {
+        width: 140px; /* Smaller card width */
+        height: 120px; /* Smaller card height */
+    }
+
+    .card i {
+        font-size: 2rem; /* Smaller icon size */
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%; /* Set specific width */
+        max-width: 250px; /* Ensure all cards have the same specific width */
+        height: 100px; /* Set specific height */
+        margin-bottom: 1rem; /* Add some space between cards */
+    }
+}
