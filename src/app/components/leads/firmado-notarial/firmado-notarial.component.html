@@ -1,102 +1,104 @@
-<div class="datosnec">
-  <p class="title">Instrucción notarial</p>
-  <br>
-  <br>
-  <p class="title">Datos necesarios</p>
-  <br>
-  <div>
-    <p>FIDEICOMITENTE</p>
-    <input class="input_style_1 w-75" id="sociedadf" [(ngModel)]="sociedadf">
+<div class="datosnec contenedor">
+  <div class="firmaNotarial">
+    <p class="title">Instrucción notarial</p>
+    <br>
+    <div>
+      <p>FIDEICOMITENTE</p>
+      <input class="input_style_1 w-75" id="sociedadf" [(ngModel)]="sociedadf">
+    </div>
+    <br>
+
+    <div>
+      <p>FIDEICOMISARIO</p>
+      <input class="input_style_1 w-75" id="fidef" [(ngModel)]="fidef">
+    </div>
+    <br>
+
+    <div>
+      <p>REPRESENTANTE LEGAL</p>
+      <input class="input_style_1 w-75" id="suscribef" [(ngModel)]="suscribef">
+    </div>
+    <br>
+
+    <div>
+      <p>ACTO</p>
+      <input class="input_style_1 w-75" id="actof" [(ngModel)]="actof" placeholder="Transmisión de propiedad en ejecución y extinción parcial de Fideicomiso">
+    </div>
+    <br>
+
+    <div>
+      <p>ADQUIRENTE (Nombre completo del cliente)</p>
+      <input class="input_style_1 w-75" id="adquieref" [(ngModel)]="adquieref" placeholder="Fulano Hernandez">
+    </div>
+    <br>
+
+    <div class="opciones">
+      <label>
+        <input type="radio" name="seccion" (change)="cambiarSeccion(true)">
+        Con fiduciario
+      </label>
+      <label>
+        <input type="radio" name="seccion" (change)="cambiarSeccion(false)">
+        Sin fiduciario
+      </label>
+    </div>
   </div>
-  <br>
 
-  <div>
-    <p>FIDEICOMISARIO</p>
-    <input class="input_style_1 w-75" id="fidef" [(ngModel)]="fidef">
+
+  <div class="verContrato">
+    <p class="title">Generar contrato</p>
+    <div class="tabla-contenedor">
+      <table class="tabla-leads">
+        <thead>
+          <tr>
+            <th>Desarrollo</th>
+            <th>Manzana</th>
+            <th>Lote</th>
+            <th>Nombre</th>
+            <th>Origen</th>
+            <th>Correo</th>
+            <th>Numero</th>
+            <th>Nota</th>
+            <th colspan="3">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Leads of ListaLeads">
+            <td>{{ Leads.desarrollo }}</td>
+            <td>{{ Leads.manzana }}</td>
+            <td>{{ Leads.lote }}</td>
+            <td>{{ Leads.leadName }}</td>
+            <td>{{ Leads.leadOrigin }}</td>
+            <td>{{ Leads.leadEmail }}</td>
+            <td>{{ Leads.leadNumber }}</td>
+            <td>{{ Leads.nota }}</td>
+            <td>
+              <div class="contenedorb" *ngIf="fiduciarios">
+                <button class="botonaccion"
+                  (click)="createPdf(Leads._id,Leads.leadModel,'ETAPA','MEDIDAS',Leads.manzana,Leads.lote,Leads.desarrollo,'MEDIDAS DE TERRENO','COLINDANCIAS',nombrecom, nacionalidad, origenes, domicilio, civil, ocupacion,'COSTO TOTAL','COSTO EN TEXTO','FECHA ACTUAL', Leads)">Generar
+                  Instrucción Notarial</button>
+              </div>
+
+              <div class="contenedorb" *ngIf="!fiduciarios">
+                <button class="botonaccion"
+                  (click)="createPdf2(Leads._id,Leads.leadModel,'ETAPA','MEDIDAS',Leads.manzana,Leads.lote,Leads.desarrollo,'MEDIDAS DE TERRENO','COLINDANCIAS',nombrecom, nacionalidad, origenes, domicilio, civil, ocupacion,'COSTO TOTAL','COSTO EN TEXTO','FECHA ACTUAL', Leads)">Generar
+                  Instrucción Notarial 2</button>
+              </div>
+            </td>
+            <td>
+              <div class="contenedorb">
+                <button class="botonaccion" (click)="avanzarlead(Leads._id)">Instrucción notarial generada</button>
+              </div>
+            </td>
+            <td>
+              <div class="contenedorb">
+                <button class="botonaccion" (click)="regresarLead(Leads._id)">Deshacer accion</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
   </div>
-  <br>
-
-  <div>
-    <p>REPRESENTANTE LEGAL</p>
-    <input class="input_style_1 w-75" id="suscribef" [(ngModel)]="suscribef">
-  </div>
-  <br>
-
-  <div>
-    <p>ACTO</p>
-    <input class="input_style_1 w-75" id="actof" [(ngModel)]="actof" placeholder="Transmisión de propiedad en ejecución y extinción parcial de Fideicomiso">
-  </div>
-  <br>
-
-  <div>
-    <p>ADQUIRENTE (Nombre completo del cliente)</p>
-    <input class="input_style_1 w-75" id="adquieref" [(ngModel)]="adquieref" placeholder="Fulano Hernandez">
-  </div>
-  <br>
-
-  
-
-  <div>
-    <input type="radio" name="seccion"  (change)="cambiarSeccion(true)"> con Fifuciario
-    <input type="radio" name="seccion" (change)="cambiarSeccion(false)"> sin fiduciario
-  </div>
-  
-
-</div>
-
-
-<div class="verLeads">
-  
-  <table>
-    <thead>
-      <tr>
-        <th>Desarrollo</th>
-        <th>Manzana</th>
-        <th>Lote</th>
-        <th>Nombre</th>
-        <th>Origen</th>
-        <th>Correo</th>
-        <th>Numero</th>
-        <th>Nota</th>
-        <th colspan="3">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let Leads of ListaLeads">
-        <td>{{ Leads.desarrollo }}</td>
-        <td>{{ Leads.manzana }}</td>
-        <td>{{ Leads.lote }}</td>
-        <td>{{ Leads.leadName }}</td>
-        <td>{{ Leads.leadOrigin }}</td>
-        <td>{{ Leads.leadEmail }}</td>
-        <td>{{ Leads.leadNumber }}</td>
-        <td>{{ Leads.nota }}</td>
-        <td>
-          <div class="contenedorb" *ngIf="fiduciarios">
-            <button class="botonaccion"
-              (click)="createPdf(Leads._id,Leads.leadModel,'ETAPA','MEDIDAS',Leads.manzana,Leads.lote,Leads.desarrollo,'MEDIDAS DE TERRENO','COLINDANCIAS',nombrecom, nacionalidad, origenes, domicilio, civil, ocupacion,'COSTO TOTAL','COSTO EN TEXTO','FECHA ACTUAL', Leads)">Generar
-              Instrucción Notarial</button>
-          </div>
-
-          <div class="contenedorb" *ngIf="!fiduciarios">
-            <button class="botonaccion"
-              (click)="createPdf2(Leads._id,Leads.leadModel,'ETAPA','MEDIDAS',Leads.manzana,Leads.lote,Leads.desarrollo,'MEDIDAS DE TERRENO','COLINDANCIAS',nombrecom, nacionalidad, origenes, domicilio, civil, ocupacion,'COSTO TOTAL','COSTO EN TEXTO','FECHA ACTUAL', Leads)">Generar
-              Instrucción Notarial 2</button>
-          </div>
-        </td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion" (click)="avanzarlead(Leads._id)">Instrucción notarial generada</button>
-          </div>
-        </td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion" (click)="regresarLead(Leads._id)">Deshacer accion</button>
-          </div>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-
 </div>

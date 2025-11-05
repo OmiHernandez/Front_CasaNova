@@ -1,102 +1,103 @@
-<div class="datosnec">
-  <h1 class="title">Generación de contrato</h1>
-  <br>
-  <br>
-  <p class="title">Datos necesarios</p>
-  <br>
-  <div>
-    <p>NOMBRE COMPLETO</p>
-    <input class="input_style_1 w-75" id="nacionalidad" [(ngModel)]="nombrecom">
+<div class="datosnec contenedor">
+  <div class="genContrato">
+    <p class="title">Generación de contrato</p>
+    <br>
+    <div>
+      <p>NOMBRE COMPLETO</p>
+      <input class="input_style_1 w-75" id="nacionalidad" [(ngModel)]="nombrecom">
+    </div>
+    <br>
+
+    <div>
+      <p>NACIONALIDAD</p>
+      <input class="input_style_1 w-75" id="nacionalidad" [(ngModel)]="nacionalidad">
+    </div>
+    <br>
+
+    <div>
+      <p>ORIGENES</p>
+      <input class="input_style_1 w-75" id="origenes" [(ngModel)]="origenes">
+    </div>
+    <br>
+
+    <div>
+      <p>DOMICILIO</p>
+      <input class="input_style_1 w-75" id="domicilio" [(ngModel)]="domicilio">
+    </div>
+    <br>
+
+    <div>
+      <p>ESTADO CIVIL</p>
+      <input class="input_style_1 w-75" id="estadoCivil" [(ngModel)]="civil">
+    </div>
+    <br>
+
+    <div>
+      <p>OCUPACION</p>
+      <input class="input_style_1 w-75" id="ocupacion" [(ngModel)]="ocupacion">
+    </div>
+    <div>
+      <p>ETAPA</p>
+      <input class="input_style_1 w-75" id="etapaf" [(ngModel)]="etapaf">
+    </div>
+    <br>
+
+    <div>
+      <p>SUPERFICIE DE TERRENO</p>
+      <input class="input_style_1 w-75" id="medterf" [(ngModel)]="medterf">
+    </div>
+    <br>
   </div>
-  <br>
 
-  <div>
-    <p>NACIONALIDAD</p>
-    <input class="input_style_1 w-75" id="nacionalidad" [(ngModel)]="nacionalidad">
+  <div class="verContrato">
+    <p class="title">Generar contrato</p>
+    <div class="tabla-contenedor">
+      <table class="tabla-leads">
+        <thead>
+          <tr>
+            <th>Desarrollo</th>
+            <th>Manzana</th>
+            <th>Lote</th>
+            <th>Nombre</th>
+            <th>Origen</th>
+            <th>Correo</th>
+            <th>Numero</th>
+            <th>Nota</th>
+            <th colspan="3">Acciones
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Leads of ListaLeads">
+            <td>{{ Leads.desarrollo }}</td>
+            <td>{{ Leads.manzana }}</td>
+            <td>{{ Leads.lote }}</td>
+            <td>{{ Leads.leadName }}</td>
+            <td>{{ Leads.leadOrigin }}</td>
+            <td>{{ Leads.leadEmail }}</td>
+            <td>{{ Leads.leadNumber }}</td>
+            <td>{{ Leads.nota }}</td>
+            <td>
+              <div class="contenedorb">
+                <button class="botonaccion"
+                  (click)="createPdf(Leads._id, Leads.idinv,Leads.leadModel,'ETAPA',Leads.medidas,Leads.manzana,Leads.lote,Leads.desarrollo,'MEDIDAS DE TERRENO','COLINDANCIAS',nombrecom, nacionalidad, origenes, domicilio, civil, ocupacion,'COSTO TOTAL','COSTO EN TEXTO','FECHA ACTUAL', Leads)">Generar
+                  contrato</button>
+              </div>
+            </td>
+            <td>
+              <div class="contenedorb">
+                <button class="botonaccion" (click)="avanzarlead(Leads._id)">Cambiar estado</button>
+              </div>
+            </td>
+            <td>
+              <div class="contenedorb">
+                <button class="botonaccion" (click)="regresarLead(Leads._id, Leads.idinv)">Deshacer accion</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
   </div>
-  <br>
-
-  <div>
-    <p>ORIGENES</p>
-    <input class="input_style_1 w-75" id="origenes" [(ngModel)]="origenes">
-  </div>
-  <br>
-
-  <div>
-    <p>DOMICILIO</p>
-    <input class="input_style_1 w-75" id="domicilio" [(ngModel)]="domicilio">
-  </div>
-  <br>
-
-  <div>
-    <p>ESTADO CIVIL</p>
-    <input class="input_style_1 w-75" id="estadoCivil" [(ngModel)]="civil">
-  </div>
-  <br>
-
-  <div>
-    <p>OCUPACION</p>
-    <input class="input_style_1 w-75" id="ocupacion" [(ngModel)]="ocupacion">
-  </div>
-  <div>
-    <p>ETAPA</p>
-    <input class="input_style_1 w-75" id="etapaf" [(ngModel)]="etapaf">
-  </div>
-  <br>
-
-  <div>
-    <p>SUPERFICIE DE TERRENO</p>
-    <input class="input_style_1 w-75" id="medterf" [(ngModel)]="medterf">
-  </div>
-  <br>
-
-
-
-  <p class="title">Generar contrato</p>
-  <table>
-    <thead>
-      <tr>
-        <th>Desarrollo</th>
-        <th>Manzana</th>
-        <th>Lote</th>
-        <th>Nombre</th>
-        <th>Origen</th>
-        <th>Correo</th>
-        <th>Numero</th>
-        <th>Nota</th>
-        <th colspan="3">Acciones
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let Leads of ListaLeads">
-        <td>{{ Leads.desarrollo }}</td>
-        <td>{{ Leads.manzana }}</td>
-        <td>{{ Leads.lote }}</td>
-        <td>{{ Leads.leadName }}</td>
-        <td>{{ Leads.leadOrigin }}</td>
-        <td>{{ Leads.leadEmail }}</td>
-        <td>{{ Leads.leadNumber }}</td>
-        <td>{{ Leads.nota }}</td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion"
-              (click)="createPdf(Leads._id, Leads.idinv,Leads.leadModel,'ETAPA',Leads.medidas,Leads.manzana,Leads.lote,Leads.desarrollo,'MEDIDAS DE TERRENO','COLINDANCIAS',nombrecom, nacionalidad, origenes, domicilio, civil, ocupacion,'COSTO TOTAL','COSTO EN TEXTO','FECHA ACTUAL', Leads)">Generar
-              contrato</button>
-          </div>
-        </td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion" (click)="avanzarlead(Leads._id)">Cambiar estado</button>
-          </div>
-        </td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion" (click)="regresarLead(Leads._id, Leads.idinv)">Deshacer accion</button>
-          </div>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
 </div>
