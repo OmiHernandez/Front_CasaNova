@@ -1,165 +1,101 @@
-.verLeads{
-    box-sizing: border-box;
-    margin: 20px;
+.verLeads {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px auto;
+  width: 90%;
+  background-color: var(--blanco);
 }
 
-.leadList{
-    width: 100%;
-  
-    background-color: rgb(235, 234, 234);
-    border: 1px solid rgb(192, 192, 192);
+.verLeads .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #c4141b;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.seleccionprospectos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cotizador-select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.cotizador-container {
     display: flex;
     flex-direction: column;
-    
+    width: 100%;
+    gap: 20px;
 }
 
-.leadList div{
-    height: 80px;
-  
-    border-bottom: 1px solid rgb(192, 192, 192);
+.cotizador-left, .cotizador-right {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-
-
-strong {
-	font-weight: bold; 
+.form-section {
+    display: flex;
+    flex-direction: column;
 }
 
-em {
-	font-style: italic; 
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-table {
-	background: #f5f5f5;
-	border-collapse: separate;
-	box-shadow: inset 0 1px 0 #fff;
-	font-size: 12px;
-	line-height: 24px;
-	margin: 30px auto;
-	text-align: left;
-	width: 100%;
-}	
-
-th {
-	background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
-	border-left: 1px solid #555;
-	border-right: 1px solid #777;
-	border-top: 1px solid #555;
-	border-bottom: 1px solid #333;
-	box-shadow: inset 0 1px 0 #999;
-	color: #fff;
-  font-weight: bold;
-	padding: 10px 15px;
-	position: relative;
-	text-shadow: 0 1px 0 #000;	
+.form-group label {
+    font-weight: 600;
+    color: #333;
 }
 
-th:after {
-	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
-	content: '';
-	display: block;
-	height: 25%;
-	left: 0;
-	margin: 1px 0 0 0;
-	position: absolute;
-	top: 25%;
-	width: 100%;
+.radio-group {
+    display: flex;
+    gap: 10px;
 }
 
-th:first-child {
-	border-left: 1px solid #777;	
-	box-shadow: inset 1px 1px 0 #999;
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-th:last-child {
-	box-shadow: inset -1px 1px 0 #999;
+.input_style_1 {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-td {
-	border-right: 1px solid #fff;
-	border-left: 1px solid #e8e8e8;
-	border-top: 1px solid #fff;
-	border-bottom: 1px solid #e8e8e8;
-	padding: 10px 15px;
-	position: relative;
-	transition: all 300ms;
+.actions {
+    text-align: center;
+    margin-top: 20px;
 }
 
-td:first-child {
-	box-shadow: inset 1px 0 0 #fff;
-}	
-
-td:last-child {
-	border-right: 1px solid #e8e8e8;
-	box-shadow: inset -1px 0 0 #fff;
-}	
-
-tr {
-	background: url(https://jackrugile.com/images/misc/noise-diagonal.png);	
-}
-
-tr:nth-child(odd) td {
-	background: #f1f1f1 url(https://jackrugile.com/images/misc/noise-diagonal.png);	
-}
-
-tr:last-of-type td {
-	box-shadow: inset 0 -1px 0 #fff; 
-}
-
-tr:last-of-type td:first-child {
-	box-shadow: inset 1px -1px 0 #fff;
-}	
-
-tr:last-of-type td:last-child {
-	box-shadow: inset -1px -1px 0 #fff;
-}	
-
-tbody:hover td {
-	color: transparent;
-	text-shadow: 0 0 3px #aaa;
-}
-
-tbody:hover tr:hover td {
-	color: #444;
-	text-shadow: 0 1px 0 #fff;
-}
-
-.seleccionprospectos button {
-	margin: 0 5px;
-}
-
-.botonaccion{
-	font-size: x-small;
+.botonaccion, .botonaccion2 {
+	font-size: small;
 	background-color: #133b67; 
 	color: #ffffff; 
 	border: none; 
-	padding: 5px 10px; 
+	padding: 8px 15px; 
 	border-radius: 5px; 
 	cursor: pointer;
 	transition: background-color 0.3s; 
 	font-weight:  bold;
 }
 
-.botonaccion:hover{
+.botonaccion:hover, .botonaccion2:hover {
 	background-color: #0056b3;
-}
-
-.botonaccion2{
-	font-size: smaller;
-	background-color: #133b67; 
-	color: #ffffff; 
-	border: none; 
-	padding: 5px 10px; 
-	border-radius: 5px; 
-	cursor: pointer;
-	transition: background-color 0.3s; 
-	font-weight:  bold;
-}
-
-.botonaccion2:hover{
-	background-color: #0056b3;
-}
-
-.contenedorb{
-	text-align: center;	
 }

@@ -1,8 +1,8 @@
-<div>
-    <p class="title" style="width: 100%; text-align: center;">Cotización</p>
-    <div class="seleccionprospectos" style="width: 100%; display: flex; justify-content: center;">
+<div class="verLeads">
+    <p class="title">Cotización</p>
+    <div class="seleccionprospectos">
 
-        <select [(ngModel)]="leadSeleccionado" (change)="getDatosCompletos()">
+        <select [(ngModel)]="leadSeleccionado" (change)="getDatosCompletos()" class="cotizador-select">
             <option *ngFor="let Leads of ListaLeads" [value]=Leads._id>
                 {{ Leads.leadName }}
             </option>
@@ -11,143 +11,102 @@
 
         <button class="botonaccion" (click)=regresarLead()>Regresar Lead</button>
     </div>
-    <div class="flex">
+    <div class="cotizador-container">
 
-        <div class="forms p-2">
-            <div class="ptb-1" *ngIf="M2 > 1">
-                <p>Metros cuadrados</p>
-                <p>{{M2}}</p>
-            </div>
-
-            <div class="ptb-1" *ngIf="M2 > 1">
-                <p>Costo por metro cuadrado</p>
-                <p>$ {{precio_M2}}</p>
-            </div>
-
-            <div class="ptb-1" *ngIf="M2 == 1">
-                <p>Costo de propiedad</p>
-                <p>{{precio_M2}}</p>
-            </div>
-
-            <div class="ptb-1">
-                <p>Descuento (%)</p>
-                <p>{{descuento}}</p>
-            </div>
-
-            <div class="ptb-1">
-                <p>Precio</p>
-                <p>$ {{precioSinEnganche | currency:'MX'}}</p>
-            </div>
-
-
-            <div class="ptb-1">
-                <div>
-                    <p>Enganche</p>
+        <div class="cotizador-left">
+            <div class="form-section">
+                <div class="form-group" *ngIf="M2 > 1">
+                    <label>Metros cuadrados</label>
+                    <span>{{M2}}</span>
                 </div>
 
-                <div class="flex-sa">
-                    <div class="flex-aic">
-                        <label for="opcion1">Si</label>
-                        <input type="radio" id="opcion1" [checked]="hayEnganche === 'Si'"
-                            (change)="checkEnganche('Si')">
-                    </div>
-                    <div class="flex-aic">
-                        <label for="opcion2">No</label>
-                        <input type="radio" id="opcion2" [checked]="hayEnganche === 'No'"
-                            (change)="checkEnganche('No')">
+                <div class="form-group" *ngIf="M2 > 1">
+                    <label>Costo por metro cuadrado</label>
+                    <span>$ {{precio_M2}}</span>
+                </div>
+
+                <div class="form-group" *ngIf="M2 == 1">
+                    <label>Costo de propiedad</label>
+                    <span>{{precio_M2}}</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Descuento (%)</label>
+                    <span>{{descuento}}</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Precio</label>
+                    <span>$ {{precioSinEnganche | currency:'MX'}}</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Enganche</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <label for="opcion1">Si</label>
+                            <input type="radio" id="opcion1" [checked]="hayEnganche === 'Si'"
+                                (change)="checkEnganche('Si')">
+                        </div>
+                        <div class="radio-option">
+                            <label for="opcion2">No</label>
+                            <input type="radio" id="opcion2" [checked]="hayEnganche === 'No'"
+                                (change)="checkEnganche('No')">
+                        </div>
                     </div>
                 </div>
+
+                <div id="inputEnganche" style="display: none;">
+                    <div class="form-group">
+                        <label>Enganche</label>
+                        <input [(ngModel)]="enganche" (ngModelChange)="calcularPrecioConEnganche()" class="input_style_1">
+                    </div>
+                    <div class="form-group">
+                        <label>Precio con enganche</label>
+                        <span>$ {{precioConEnganche | currency: 'MX'}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Interes</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <label for="opcion1">Si</label>
+                            <input type="radio" id="opcion1" [checked]="hayInteres === 'Si'" (change)="checkInteres('Si')">
+                        </div>
+                        <div class="radio-option">
+                            <label for="opcion2">No</label>
+                            <input type="radio" id="opcion2" [checked]="hayInteres === 'No'" (change)="checkInteres('No')">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="inputInteres" style="display: none;">
+                    <div class="form-group">
+                        <label>Porcentaje interes</label>
+                        <input [(ngModel)]="interes" class="input_style_1">
+                    </div>
+                    <div class="form-group">
+                        <label>Desde</label>
+                        <input [(ngModel)]="mesDesde" class="input_style_1">
+                    </div>
+                    <div class="form-group">
+                        <label>Hasta</label>
+                        <input [(ngModel)]="mesHasta" (ngModelChange)="validarInteres()" class="input_style_1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Plazos</label>
+                    <input class="input_style_1" [(ngModel)]="this.plazos" (ngModelChange)="asignarPlazos()">
+                </div>
             </div>
-
-            <div id="inputEnganche" style="display: none;">
-                <div class="ptb-1">
-                    <p>Enganche</p>
-                    <input [(ngModel)]="enganche" (ngModelChange)="calcularPrecioConEnganche()" class="input_style_1">
-                </div>
-                <div class="ptb-1">
-                    <p>Precio con enganche</p>
-                    <p>$ {{precioConEnganche | currency: 'MX'}}</p>
-                </div>
-            </div>
-
-            <br>
-            Interes
-            <div class="flex-sa">
-                <div class="flex-aic">
-                    <label for="opcion1">Si</label>
-                    <input type="radio" id="opcion1" [checked]="hayInteres === 'Si'" (change)="checkInteres('Si')">
-                </div>
-                <div class="flex-aic">
-                    <label for="opcion2">No</label>
-                    <input type="radio" id="opcion2" [checked]="hayInteres === 'No'" (change)="checkInteres('No')">
-                </div>
-            </div>
-
-            <div id="inputInteres" style="display: none;">
-                <div class="ptb-1">
-                    <p>Porcentaje interes</p>
-                    <input [(ngModel)]="interes" class="input_style_1">
-                </div>
-                <div class="ptb-1">
-                    <p>Desde</p>
-                    <input [(ngModel)]="mesDesde" class="input_style_1">
-                </div>
-                <div class="ptb-1">
-                    <p>Hasta</p>
-                    <input [(ngModel)]="mesHasta" (ngModelChange)="validarInteres()" class="input_style_1">
-                </div>
-
-            </div>
-            <br>
-
-            <div class="">
-                <p>Plazos</p>
-                <input class="input_style_1" [(ngModel)]="this.plazos" (ngModelChange)="asignarPlazos()">
-            </div>
-            <br>
-
-
-
         </div>
 
-        <div style="width: 100%;">
-
-            <br>
-            <!-- <p class="txt-c">MENSUALIDADES</p> -->
-            <!-- <table>
-                <thead>
-                    <tr>
-                        <th>Periodo</th>
-                        <th>Pago</th>
-                        <th>Fecha de pago</th>
-                        <th>Interes</th>
-                        <th>Saldo + Interes</th>
-                    <th>Interés</th>
-                    <th>Capital Amortizado</th>
-                        <th>Saldo al final del periodo</th>
-                    </tr>
-                </thead>
-                <tbody id="trBody">
-                    <tr>
-                        <td id="c_periodo"></td>
-                        <td id="c_pago"></td>
-                        <td id="c_fecha"></td>
-                        <td id="c_interes"></td>
-                        <td id="c_interesSaldo"></td>
-                    <td id="c_interes"></td>
-                    <td id="c_capital"></td>
-                        <td id="c_saldo"></td>
-                    </tr>
-                </tbody>
-            </table> -->
-            <div class="txt-c">
+        <div class="cotizador-right">
+            <div class="actions">
                 <button class="p-1 botonaccion2" (click)="capturaMensualidad()">Capturar</button>
-
             </div>
-
-
         </div>
-
     </div>
-
 </div>
