@@ -1,107 +1,77 @@
-.registerLead{
-    
-    padding: 20px;
-    
+.contenedor {
+	display: flex;
+	flex-direction: column;
+  	align-items: center;          /* Centra horizontalmente */
+ 	justify-content: center;  
 }
 
 
-
-table {
-	background: #f5f5f5;
-	border-collapse: separate;
-	box-shadow: inset 0 1px 0 #fff;
-	font-size: 12px;
-	line-height: 24px;
-	margin: 30px auto;
-	text-align: left;
-	width: 100%;
-}	
-
-th {
-	background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
-	border-left: 1px solid #555;
-	border-right: 1px solid #777;
-	border-top: 1px solid #555;
-	border-bottom: 1px solid #333;
-	box-shadow: inset 0 1px 0 #999;
-	color: #fff;
+.registerLead .title {
+  font-size: 24px;
   font-weight: bold;
-	padding: 10px 15px;
-	position: relative;
-	text-shadow: 0 1px 0 #000;	
+  margin-top: 20px;
+  text-align: center;
+  color: #c4141b;
 }
 
-th:after {
-	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
-	content: '';
-	display: block;
-	height: 25%;
-	left: 0;
-	margin: 1px 0 0 0;
-	position: absolute;
-	top: 25%;
-	width: 100%;
+.registerLead { 
+  width: 70%; 
+  display: flex; 
+  flex-direction: column;       /* Centra horizontalmente */
+  text-align: left; 
+  font-size: 16px; 
+  color: var(--gris); 
+  background-color: var(--blanco); 
+} 
+
+.registerLead>div input,
+.registerLead>div select {
+    width: 100%;
+    margin: 8px 0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1.5px solid #e0e0e0;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
 }
 
-th:first-child {
-	border-left: 1px solid #777;	
-	box-shadow: inset 1px 1px 0 #999;
+.registerLead>div input:focus,
+.registerLead>div select:focus {
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(196, 20, 27, 0.3);
+    outline: none;
+    transform: scale(1.02);
 }
 
-th:last-child {
-	box-shadow: inset -1px 1px 0 #999;
+.registerLead>div input::placeholder {
+    color: #999;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
 }
 
-td {
-	border-right: 1px solid #fff;
-	border-left: 1px solid #e8e8e8;
-	border-top: 1px solid #fff;
-	border-bottom: 1px solid #e8e8e8;
-	padding: 10px 15px;
-	position: relative;
-	transition: all 300ms;
+
+.registerLead>div input:hover,
+.registerLead>div select:hover {
+    background-color: #fefefe;
+    border-color: #dcdcdc;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
 
-td:first-child {
-	box-shadow: inset 1px 0 0 #fff;
-}	
-
-td:last-child {
-	border-right: 1px solid #e8e8e8;
-	box-shadow: inset -1px 0 0 #fff;
-}	
-
-tr {
-	background: url(https://jackrugile.com/images/misc/noise-diagonal.png);	
+.btn-style-1 {
+  background-color: #c4141b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
-tr:nth-child(odd) td {
-	background: #f1f1f1 url(https://jackrugile.com/images/misc/noise-diagonal.png);	
+.btn-style-1:hover {
+  background-color: #a31216;
+  transform: scale(1.05);
 }
-
-tr:last-of-type td {
-	box-shadow: inset 0 -1px 0 #fff; 
-}
-
-tr:last-of-type td:first-child {
-	box-shadow: inset 1px -1px 0 #fff;
-}	
-
-tr:last-of-type td:last-child {
-	box-shadow: inset -1px -1px 0 #fff;
-}	
-
-tbody:hover td {
-	color: transparent;
-	text-shadow: 0 0 3px #aaa;
-}
-
-tbody:hover tr:hover td {
-	color: #444;
-	text-shadow: 0 1px 0 #fff;
-}
-
-select {
-    box-sizing: content-box;
-}
-

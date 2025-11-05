@@ -1,38 +1,42 @@
 <div class="verLeads">
   <p class="title">Reportes Post Venta</p>
-  <table>
-    <thead>
-      <tr>
-        <th>Desarrollo</th>
-        <th>Manzana</th>
-        <th>Lote</th>
-        <th>Nombre</th>
-        <th>Origen</th>
-        <th>Correo</th>
-        <th>Numero</th>
-        <th>Nota</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let Leads of ListaLeads">
-        <td>{{ Leads.desarrollo }}</td>
-        <td>{{ Leads.manzana }}</td>
-        <td>{{ Leads.lote }}</td>
-        <td>{{ Leads.leadName }}</td>
-        <td>{{ Leads.leadOrigin }}</td>
-        <td>{{ Leads.leadEmail }}</td>
-        <td>{{ Leads.leadNumber }}</td>
-        <td>{{ Leads.nota }}</td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion" (click)="reportepost(Leads._id)">Generar reporte</button>
-          </div>
-        </td>
-      </tr>
+  <div class="tabla-contenedor">
+    <table class="tabla-leads">
+      <thead>
+        <tr>
+          <th>Desarrollo</th>
+          <th>Manzana</th>
+          <th>Lote</th>
+          <th>Nombre</th>
+          <th>Origen</th>
+          <th>Correo</th>
+          <th>Numero</th>
+          <th>Nota</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Leads of ListaLeads">
+          <td>{{ Leads.desarrollo }}</td>
+          <td>{{ Leads.manzana }}</td>
+          <td>{{ Leads.lote }}</td>
+          <td>{{ Leads.leadName }}</td>
+          <td>{{ Leads.leadOrigin }}</td>
+          <td>{{ Leads.leadEmail }}</td>
+          <td>{{ Leads.leadNumber }}</td>
+          <td>{{ Leads.nota }}</td>
+          <td>
+            <div class="contenedorb">
+              <button class="botonaccion" (click)="reportepost(Leads._id)">Generar reporte</button>
+            </div>
+          </td>
+        </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
+
+  
   <!--(click)="ocultarme()" -->
   <div id="formreporte" (click)="ocultarme($event)" [style.display]="mostrarTabla ? 'flex' : 'none'">
     <form [formGroup]="formGroup">

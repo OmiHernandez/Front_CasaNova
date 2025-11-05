@@ -1,31 +1,32 @@
 <div class="verLeads">
   <p class="title">Leads</p>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Origen</th>
-        <th>Correo</th>
-        <th>Numero</th>
-        <th>Nota</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let Leads of ListaLeads">
-        <td>{{ Leads.leadName }}</td>
-        <td>{{ Leads.leadOrigin }}</td>
-        <td>{{ Leads.leadEmail }}</td>
-        <td>{{ Leads.leadNumber }}</td>
-        <td>{{ Leads.nota }}</td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion" (click)="avanzarlead(Leads._id)">Cambiar a Prospecto</button>
-          </div>
-        </td>
-      </tr>
+  <div class="tabla-contenedor">
+    <table class="tabla-leads">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Origen</th>
+          <th>Correo</th>
+          <th>Numero</th>
+          <th>Nota</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Leads of ListaLeads">
+          <td>{{ Leads.leadName }}</td>
+          <td>{{ Leads.leadOrigin }}</td>
+          <td>{{ Leads.leadEmail }}</td>
+          <td>{{ Leads.leadNumber }}</td>
+          <td>{{ Leads.nota }}</td>
+          <td>
+            <div class="contenedorb">
+              <button class="botonaccion" (click)="avanzarlead(Leads._id)">Cambiar a Prospecto</button>
+            </div>
+          </td>
+        </tr>
 
-    </tbody>
-  </table>
-
+      </tbody>
+    </table>
+  </div>
 </div>

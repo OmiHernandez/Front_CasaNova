@@ -1,42 +1,43 @@
 <div class="verLeads">
   <p class="title">Instrucción notarial firmada</p>
-  <table>
-    <thead>
-      <tr>
-        <th>Desarrollo</th>
-        <th>Manzana</th>
-        <th>Lote</th>
-        <th>Nombre</th>
-        <th>Origen</th>
-        <th>Correo</th>
-        <th>Numero</th>
-        <th>Nota</th>
-        <th colspan="2">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let Leads of ListaLeads">
-        <td>{{ Leads.desarrollo }}</td>
-        <td>{{ Leads.manzana }}</td>
-        <td>{{ Leads.lote }}</td>
-        <td>{{ Leads.leadName }}</td>
-        <td>{{ Leads.leadOrigin }}</td>
-        <td>{{ Leads.leadEmail }}</td>
-        <td>{{ Leads.leadNumber }}</td>
-        <td>{{ Leads.nota }}</td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion" (click)="avanzarlead(Leads._id)">Instrucción firmada y entregada</button>
-          </div>
-        </td>
-        <td>
-          <div class="contenedorb">
-            <button class="botonaccion" (click)="regresarLead(Leads._id)">Deshacer accion</button>
-          </div>
-        </td>
-      </tr>
+  <div class="tabla-contenedor">
+    <table class="tabla-leads">
+      <thead>
+        <tr>
+          <th>Desarrollo</th>
+          <th>Manzana</th>
+          <th>Lote</th>
+          <th>Nombre</th>
+          <th>Origen</th>
+          <th>Correo</th>
+          <th>Numero</th>
+          <th>Nota</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Leads of ListaLeads">
+          <td>{{ Leads.desarrollo }}</td>
+          <td>{{ Leads.manzana }}</td>
+          <td>{{ Leads.lote }}</td>
+          <td>{{ Leads.leadName }}</td>
+          <td>{{ Leads.leadOrigin }}</td>
+          <td>{{ Leads.leadEmail }}</td>
+          <td>{{ Leads.leadNumber }}</td>
+          <td>{{ Leads.nota }}</td>
+          <td>
+            <div class="contenedorb">
+              <button class="botonaccion" (click)="avanzarlead(Leads._id)">Instrucción firmada y entregada</button>
+            </div>
+          </td>
+          <td>
+            <div class="contenedorb">
+              <button class="botonaccion" (click)="regresarLead(Leads._id)">Deshacer accion</button>
+            </div>
+          </td>
+        </tr>
 
-    </tbody>
-  </table>
-
+      </tbody>
+    </table>
+  </div>
 </div>

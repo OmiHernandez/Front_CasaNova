@@ -1,10 +1,9 @@
 .sidebar{
     display: flex;
     flex-direction: column;
-    background-color: rgb(215, 215, 215);
-    color: rgb(58, 58, 58);
+    background-color: #c9c9c9;
+    color: #2c2c2c;
     width: 15vw;
-    text-align: center;
     height: 100%;
     box-sizing: border-box;
 }
@@ -31,4 +30,3 @@
     background-color: rgb(69, 69, 69);
     color: rgb(204, 204, 204);
 }
-
