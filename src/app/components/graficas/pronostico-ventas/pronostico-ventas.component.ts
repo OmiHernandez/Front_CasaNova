@@ -37,6 +37,8 @@ export class PronosticoVentasComponent {
 
   view: [number, number]  = [700, 400];
 
+
+
   // options
   showXAxis = true;
   showYAxis = true;

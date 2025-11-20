@@ -29,6 +29,8 @@ export class ApartadoPorCanalComponent {
 
   view: [number, number]  = [700, 400];
 
+
+
   // options
   showXAxis = true;
   showYAxis = true;

@@ -352,3 +352,12 @@ th{
     text-align: center;
 }
 
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+}

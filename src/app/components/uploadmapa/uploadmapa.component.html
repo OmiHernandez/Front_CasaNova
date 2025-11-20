@@ -1,8 +1,28 @@
-<div class="form-group col-12 ">
-    <input type="text" id="fileName" [(ngModel)]="fileName" placeholder="Ingrese el nombre del mapa"
-        class="form-control" />
+<div class="container">
+  <h3>Cargar Nuevo Mapa</h3>
+
+  <div class="main-content">
+    <div class="left-column">
+      <div class="form-container">
+        <div class="form-group">
+          <label for="fileName">Nombre del mapa</label>
+          <input type="text" id="fileName" [(ngModel)]="fileName" placeholder="Ingrese el nombre del mapa" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="file">Seleccione el archivo del mapa</label>
+          <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button (click)="confirmarPosicion()" class="btn btn-secondary">Confirmar Posición</button>
+        <button (click)="crearArchivo()" class="btn btn-primary" [disabled]="!isPositionConfirmed">Crear</button>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <p class="info-text">Seleccione en el mapa la ubicación del desarrollo y luego presione "Confirmar Posición" para registrar coordenadas antes de crear el mapa</p>
+      <div #map id="map" style="height: 300px; width: 100%;"></div>
+    </div>
+  </div>
 </div>
-<div class="form-group col-12">
-    <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
-</div>
-<button (click)="crearArchivo()" class="btn btn-primary">Crear</button>

@@ -30,6 +30,7 @@ import { ReportesComponent } from './components/pipeline/reportes/reportes.compo
 import { EstadisticasglobalesComponent } from './components/graficas/estadisticasglobales/estadisticasglobales.component';
 import { SeleccionarDesarrolloComponent } from './components/seleccionar-desarrollo/seleccionar-desarrollo.component';
 import { DashboardHomeComponent } from './components/dashboard/dashboard-home/dashboard-home.component';
+import { VerMapaInventarioComponent } from './components/inventarios/ver-mapa-inventario/ver-mapa-inventario.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/login',pathMatch:'full'},
@@ -63,7 +64,8 @@ const routes: Routes = [
     { path: 'mapa/:nombre',component:MapaComponent},
     { path: 'mapa/:nombre/:idMapa',component:MapaComponent},
     { path: 'asignaInventario/:id',component:AsignaInventarioComponent},
-    { path: 'desarrollo',component:SeleccionarDesarrolloComponent}
+    { path: 'desarrollo',component:SeleccionarDesarrolloComponent},
+    { path: 'ver-mapa-inventario', component: VerMapaInventarioComponent}
     
   ]},
 

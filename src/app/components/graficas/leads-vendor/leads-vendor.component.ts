@@ -40,11 +40,11 @@ export class LeadsVendorComponent {
       "name": "instagram",
       "value": 0
     }
-  ];
-
-  view: [number, number] = [700, 400];
-
-  // options
+    ];
+  
+    view: [number, number] = [700, 400];
+  
+    // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;

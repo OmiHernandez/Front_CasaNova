@@ -31,6 +31,8 @@ export class InventarioDisponibleComponent {
 
   view: [number, number]  = [700, 400];
 
+
+
   // options
   showXAxis = true;
   showYAxis = true;

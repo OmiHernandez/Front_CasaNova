@@ -15,6 +15,10 @@ export class MapasService {
     return this.http.get(this.api.getApiURL() + "/getMapas");
   }
 
+  getMapasCoordenadas(): Observable<any> {
+    return this.http.get(this.api.getApiURL() + "/getMapasCoordenadas");
+  }
+
   addMapa(mapa: any): Observable<any> {
     console.log(mapa, "Mapa");
     return this.http.post(this.api.getApiURL() + "/addMapa", mapa);

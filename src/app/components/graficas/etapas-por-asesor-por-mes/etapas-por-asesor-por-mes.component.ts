@@ -42,6 +42,8 @@ export class EtapasPorAsesorPorMesComponent {
 
   view: [number, number]  = [700, 400];
 
+
+
   // options
   showXAxis: boolean = true;
   showYAxis: boolean = true;

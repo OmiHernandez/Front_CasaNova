@@ -102,7 +102,7 @@ export class MenuMapasComponent {
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: "Eliminar",
-      denyButtonText: `No eliminar`
+      denyButtonText: `Cancelar`
     }).then((result) => {
       if (result.isConfirmed) {
         // Mostrar la alerta de éxito inmediatamente

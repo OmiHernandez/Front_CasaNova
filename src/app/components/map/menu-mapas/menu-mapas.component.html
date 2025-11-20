@@ -20,6 +20,8 @@
       <thead>
         <tr>
           <th>Nombre del mapa</th>
+          <th>Latitud</th>
+          <th>Longitud</th>
           <th>Acción</th>
 
 
@@ -28,6 +30,8 @@
       <tbody>
         <tr *ngFor="let map of mapas">
           <td>{{map.nombreMapa}}</td>
+          <td>{{map.coordLat}}</td>
+          <td>{{map.coordLng}}</td>
 
           <td class="w-25 iconos">
             <div class="flex-sa">
