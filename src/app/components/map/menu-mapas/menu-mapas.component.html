@@ -15,40 +15,43 @@
       <app-uploadmapa></app-uploadmapa>
     </div>
 
+    <div class="verMapas">
+      <p class="title">Generar contrato</p>
+      <div class="tabla-contenedor">
+        <table class="tabla-mapas">
+          <thead>
+            <tr>
+              <th>Nombre del mapa</th>
+              <th>Latitud</th>
+              <th>Longitud</th>
+              <th>Acción</th>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre del mapa</th>
-          <th>Latitud</th>
-          <th>Longitud</th>
-          <th>Acción</th>
 
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let map of mapas">
+              <td>{{map.nombreMapa}}</td>
+              <td>{{map.coordLat}}</td>
+              <td>{{map.coordLng}}</td>
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let map of mapas">
-          <td>{{map.nombreMapa}}</td>
-          <td>{{map.coordLat}}</td>
-          <td>{{map.coordLng}}</td>
+              <td class="w-25 iconos contenedorb">
+                <div class="flex-sa">
+                  <button class="btn-style-1 botonaccion" (click)="configurarMapa(map._id)">Configurar</button>
+                  <button class="btn-style-1 botonaccion" (click)="eliminarMapa(map._id)">Eliminar</button>
+                </div>
 
-          <td class="w-25 iconos">
-            <div class="flex-sa">
-              <button class="btn-style-1" (click)="configurarMapa(map._id)">Configurar</button>
-              <button class="btn-style-1" (click)="eliminarMapa(map._id)">Eliminar</button>
-            </div>
-
-            <!-- <i class="fa-solid fa-wrench"  ></i>
+                <!-- <i class="fa-solid fa-wrench"  ></i>
                     <i class="fa-solid fa-trash-can" ></i> -->
-          </td>
+              </td>
 
-        </tr>
+            </tr>
 
-      </tbody>
-    </table>
+          </tbody>
+        </table>
 
-
+      </div>
+    </div>
 
 
 

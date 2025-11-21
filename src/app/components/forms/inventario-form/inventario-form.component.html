@@ -1,99 +1,97 @@
-<form [formGroup]="inventarioForm" (ngSubmit)="onSubmit()" class="registerLead p-2">
-  
+<div class="datosnec contenedor">
+  <form [formGroup]="inventarioForm" (ngSubmit)="onSubmit()" class="registerLead p-2 inventario">
     <p class="title">Alta de inventario</p>
     <br>
-    
-
     <div>
       <p>Desarrollo</p>
       <input class="input_style_1 w-75" formControlName="desarrollo">
-  </div>
-  <br>
-  
-  <br>
+    </div>
+    <br>
+
+    <br>
     <div>
-        <p>Manzana</p>
-        <input class="input_style_1 w-75" formControlName="manzana">
+      <p>Manzana</p>
+      <input class="input_style_1 w-75" formControlName="manzana">
     </div>
     <br>
     <div>
-        <p>Lote</p>
-        <input class="input_style_1 w-75" formControlName="lote">
+      <p>Lote</p>
+      <input class="input_style_1 w-75" formControlName="lote">
     </div>
-  
+
     <!-- Sección de colindancias -->
     <div class="divColindancias p-5">
       <h4>Colindancias</h4>
-      
+
       <br>
-      <div>
+      <div class="opciones">
         <p>Colinda con la calle:</p>
-            <label>
-              <input type="radio" name="ColCalle" value="ColindaCalle" (change)="onRadioChange('SiCalle')" > Si
-            </label>
-            <label>
-              <input type="radio" name="ColCalle" value="NoColindaCalle" (change)="onRadioChange('NoCalle')" checked> No
-            </label>
+        <label>
+          <input type="radio" name="ColCalle" value="ColindaCalle" (change)="onRadioChange('SiCalle')"> Si
+        </label>
+        <label>
+          <input type="radio" name="ColCalle" value="NoColindaCalle" (change)="onRadioChange('NoCalle')" checked> No
+        </label>
       </div>
-  
+
       <div id="contColindancias" class="cont-colindancias">
         <div *ngIf="selectedOption === 'SiCalle'">
           <p>Nombre de la calle</p>
-          <input  formControlName="nombreCalle" class="input_style_1 w-75" >
+          <input formControlName="nombreCalle" class="input_style_1 w-75">
         </div>
 
         <br>
         <div *ngIf="selectedOption === 'NoCalle'">
-            <p>Manzana</p>
-            <input  formControlName="manzanac" class="input_style_1 w-75" >
+          <p>Manzana</p>
+          <input formControlName="manzanac" class="input_style_1 w-75">
         </div>
         <br>
         <div *ngIf="selectedOption === 'NoCalle'">
-            <p>Lote</p>
-            <input  formControlName="lotec" class="input_style_1 w-75" >
+          <p>Lote</p>
+          <input formControlName="lotec" class="input_style_1 w-75">
         </div>
         <br>
         <div>
-            <p>Metros</p>
-            <input formControlName="metros" class="input_style_1 w-75" >
+          <p>Metros</p>
+          <input formControlName="metros" class="input_style_1 w-75">
         </div>
         <br>
-        <div class="w-75 flex-sa">
-            <p>Opción:</p>
-            <label>
-              <input type="radio" formControlName="opcionRadio" value="Norte"> Norte
-            </label>
-            <label>
-              <input type="radio" formControlName="opcionRadio" value="Sur"> Sur
-            </label>
-            <label>
-              <input type="radio" formControlName="opcionRadio" value="Este"> Este
-            </label>
-            <label>
-              <input type="radio" formControlName="opcionRadio" value="Oeste"> Oeste
-            </label>
-            <label>
-              <input type="radio" formControlName="opcionRadio" value="Noreste"> Noreste
-            </label>
-            <label>
-              <input type="radio" formControlName="opcionRadio" value="Noroeste"> Noroeste
-            </label>
-            <label>
-              <input type="radio" formControlName="opcionRadio" value="Sureste"> Sureste
-            </label>
-            <label>
-              <input type="radio" formControlName="opcionRadio" value="Suroeste"> Suroeste
-            </label>
-          </div>
-      
+        <div class="w-75 flex-sa opciones">
+          <p>Opción:</p>
+          <label>
+            <input type="radio" formControlName="opcionRadio" value="Norte"> Norte
+          </label>
+          <label>
+            <input type="radio" formControlName="opcionRadio" value="Sur"> Sur
+          </label>
+          <label>
+            <input type="radio" formControlName="opcionRadio" value="Este"> Este
+          </label>
+          <label>
+            <input type="radio" formControlName="opcionRadio" value="Oeste"> Oeste
+          </label>
+          <label>
+            <input type="radio" formControlName="opcionRadio" value="Noreste"> Noreste
+          </label>
+          <label>
+            <input type="radio" formControlName="opcionRadio" value="Noroeste"> Noroeste
+          </label>
+          <label>
+            <input type="radio" formControlName="opcionRadio" value="Sureste"> Sureste
+          </label>
+          <label>
+            <input type="radio" formControlName="opcionRadio" value="Suroeste"> Suroeste
+          </label>
+        </div>
+
 
 
       </div>
-  
+
       <br>
       <button type="button" class="btn-style-1" (click)="onSubmitColindancia()">Añadir colindancia</button>
     </div>
-  
+
     <!-- Resto de campos -->
     <div>
       <p>Prototipo</p>
@@ -101,20 +99,27 @@
     </div>
     <br>
 
-    <div>
-      <input type="radio" name="seccion" [(ngModel)]="seccionSeleccionada" (change)="cambiarSeccion(true)" [checked]="valorpormetros"> Valor por metro cuadrado
-      <input type="radio" name="seccion" [(ngModel)]="seccionSeleccionada" (change)="cambiarSeccion(false)" [checked]="!valorpormetros"> Valor de vivienda
+    <div class="opciones">
+      <label>
+        <input type="radio" name="seccion" [(ngModel)]="seccionSeleccionada" (change)="cambiarSeccion(true)"
+        [checked]="valorpormetros"> Valor por metro cuadrado
+      </label>
+      <label>
+        <input type="radio" name="seccion" [(ngModel)]="seccionSeleccionada" (change)="cambiarSeccion(false)"
+        [checked]="!valorpormetros"> Valor de vivienda
+      </label>
+      
     </div>
     <br>
     <div *ngIf="valorpormetros === true || valorpormetros === false">
-      <p *ngIf="valorpormetros === true" >Precio por M2</p>
-      <p *ngIf="valorpormetros === false" >Valor de la vivienda</p>
+      <p *ngIf="valorpormetros === true">Precio por M2</p>
+      <p *ngIf="valorpormetros === false">Valor de la vivienda</p>
       <input [(ngModel)]="preciobase" class="input_style_1 w-75" formControlName="precioVenta" type="number">
     </div>
     <br>
     <div *ngIf="valorpormetros === true">
       <p>Medidas de terreno</p>
-      <input [(ngModel)]="metrosterreno" class="input_style_1 w-75" formControlName="medidasTerreno"  type="number">
+      <input [(ngModel)]="metrosterreno" class="input_style_1 w-75" formControlName="medidasTerreno" type="number">
     </div>
     <br>
     <div>
@@ -135,4 +140,5 @@
       <button type="submit" class="btn-style-1" (click)="picarbotton()">Alta inventario</button>
     </div>
   </form>
-  
+
+</div>

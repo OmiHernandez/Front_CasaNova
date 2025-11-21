@@ -1,34 +1,31 @@
 <div class="verLeads">
-    <p class="title">Inventario disponible</p>
-    <table>
-        <thead>
-          <tr>
-            <th>Desarrollo</th>
-            <th>Manzana</th>
-            <th>Lote</th>
-            <th>Precio de venta</th>
-            <th>Prototipo</th>
-            <th>Medidas de terreno</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let inv of arrInventarios" [id]="inv._id" (click)="selectaInventario(inv._id)">
-            <td>{{inv.desarrollo}}</td>
-            <td>{{inv.manzana}}</td>
-            <td>{{inv.lote}}</td>
+  <p class="title">Inventario disponible</p>
+  <div class="tabla-contenedor">
+    <table class="tabla-leads">
+      <thead>
+        <tr>
+          <th>Desarrollo</th>
+          <th>Manzana</th>
+          <th>Lote</th>
+          <th>Precio de venta</th>
+          <th>Prototipo</th>
+          <th>Medidas de terreno</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inv of arrInventarios" [id]="inv._id" (click)="selectaInventario(inv._id)">
+          <td>{{ inv.desarrollo }}</td>
+          <td>{{ inv.manzana }}</td>
+          <td>{{ inv.lote }}</td>
 
-            <td *ngIf="inv.medidas > 1">${{inv.precioVenta}} por m2</td>
-            <td *ngIf="inv.medidas == 1">${{inv.precioVenta}} por vivienda</td>
+          <td *ngIf="inv.medidas > 1">${{ inv.precioVenta }} por m2</td>
+          <td *ngIf="inv.medidas == 1">${{ inv.precioVenta }} por vivienda</td>
 
-            <td>{{inv.prototipo}}</td>
-            <td *ngIf="inv.medidas > 1">{{inv.medidas}} m2</td>
-            <td *ngIf="inv.medidas == 1">No aplica</td>
-         
-          </tr>
-          
-        </tbody>
-      </table>
-
-    
+          <td>{{ inv.prototipo }}</td>
+          <td *ngIf="inv.medidas > 1">{{ inv.medidas }} m2</td>
+          <td *ngIf="inv.medidas == 1">No aplica</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
