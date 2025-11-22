@@ -29,7 +29,7 @@ export class ReportesgraficaComponent {
     }
   ];
 
-  view: [number, number]  = [700, 400];
+  // view: [number, number]  = [700, 400];
 
   // options
   showXAxis = true;
