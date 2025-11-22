@@ -39,7 +39,7 @@ export class UploadmapaComponent implements OnInit, AfterViewInit {
   marker: any;
   coordLat: number = 0;
   coordLng: number = 0;
-  isPositionConfirmed: boolean = false; // New flag
+  isPositionConfirmed: boolean = false;
 
   constructor(private router: Router, private mapa: MapasService) {}
 

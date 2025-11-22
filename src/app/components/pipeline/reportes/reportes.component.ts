@@ -46,9 +46,10 @@ export class ReportesComponent {
      private formBuilder: FormBuilder,
     private userService:UserServiceService) {
     this.reportesService.getReportes().subscribe((data:any[])=>{
+      console.log("Data recibida:", data);
       this.ListaReportes = data;
-      console.log(data)
       this.ListaReportes.forEach(e => {
+        console.log(e.id_usuario,"Buscando a ID USUARIO");
         this.userService.getUsernameById(e.id_usuario).subscribe(uname=>{
           var obj = {
             _id:e._id,
