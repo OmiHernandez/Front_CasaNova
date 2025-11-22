@@ -6,7 +6,8 @@
 
 
 .dashboard-workspace{
-    width: 100%;
+    flex-grow: 1;
+    overflow-x: auto;
     transition: margin-left 0.3s ease-in-out;
 }
 

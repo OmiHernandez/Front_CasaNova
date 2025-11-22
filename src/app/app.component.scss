@@ -1,0 +1,11 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Make the main container take full viewport height */
+}
+
+/* Ensure that the router-outlet content can scroll independently if needed */
+router-outlet {
+    flex-grow: 1; /* Allow router-outlet to take remaining space */
+    overflow-y: auto; /* Enable vertical scrolling for the content */
+}
