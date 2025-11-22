@@ -28,7 +28,7 @@ export class LeadsAcomuladosComponent {
     }
   ];
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

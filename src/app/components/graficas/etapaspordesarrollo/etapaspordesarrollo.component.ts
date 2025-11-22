@@ -29,7 +29,7 @@ export class EtapaspordesarrolloComponent {
     }
   ];
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

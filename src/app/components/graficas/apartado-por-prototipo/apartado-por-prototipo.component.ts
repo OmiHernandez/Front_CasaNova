@@ -28,7 +28,7 @@ export class ApartadoPorPrototipoComponent {
     }
   ];
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

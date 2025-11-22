@@ -35,7 +35,7 @@ export class PronosticoVentasComponent {
     }
   ];
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

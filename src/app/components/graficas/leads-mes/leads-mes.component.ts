@@ -28,7 +28,7 @@ export class LeadsMesComponent {
     }
   ];
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

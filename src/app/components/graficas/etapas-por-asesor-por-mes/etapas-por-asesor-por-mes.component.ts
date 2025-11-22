@@ -40,7 +40,7 @@ export class EtapasPorAsesorPorMesComponent {
   
   ];
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

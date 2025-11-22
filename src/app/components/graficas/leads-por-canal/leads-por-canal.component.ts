@@ -28,7 +28,7 @@ export class LeadsPorCanalComponent {
     }
   ];
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

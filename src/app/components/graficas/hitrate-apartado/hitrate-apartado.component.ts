@@ -25,7 +25,7 @@ export class HitrateApartadoComponent {
   ];
 
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

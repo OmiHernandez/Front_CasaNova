@@ -29,7 +29,7 @@ export class InventarioDisponibleComponent {
     }
   ];
 
-  view: [number, number]  = [700, 400];
+  
 
 
 

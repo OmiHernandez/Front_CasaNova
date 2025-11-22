@@ -1,26 +1,26 @@
 <div class="datosnec contenedor">
-  <form [formGroup]="inventarioForm" (ngSubmit)="onSubmit()" class="registerLead p-2 inventario">
+  <form [formGroup]="inventarioForm" (ngSubmit)="onSubmit()" class="registerLead inventario">
     <p class="title">Alta de inventario</p>
     <br>
     <div>
       <p>Desarrollo</p>
-      <input class="input_style_1 w-75" formControlName="desarrollo">
+      <input class="input_style_1" formControlName="desarrollo">
     </div>
     <br>
 
     <br>
     <div>
       <p>Manzana</p>
-      <input class="input_style_1 w-75" formControlName="manzana">
+      <input class="input_style_1" formControlName="manzana">
     </div>
     <br>
     <div>
       <p>Lote</p>
-      <input class="input_style_1 w-75" formControlName="lote">
+      <input class="input_style_1" formControlName="lote">
     </div>
 
     <!-- Sección de colindancias -->
-    <div class="divColindancias p-5">
+    <div class="divColindancias">
       <h4>Colindancias</h4>
 
       <br>
@@ -37,26 +37,26 @@
       <div id="contColindancias" class="cont-colindancias">
         <div *ngIf="selectedOption === 'SiCalle'">
           <p>Nombre de la calle</p>
-          <input formControlName="nombreCalle" class="input_style_1 w-75">
+          <input formControlName="nombreCalle" class="input_style_1">
         </div>
 
         <br>
         <div *ngIf="selectedOption === 'NoCalle'">
           <p>Manzana</p>
-          <input formControlName="manzanac" class="input_style_1 w-75">
+          <input formControlName="manzanac" class="input_style_1">
         </div>
         <br>
         <div *ngIf="selectedOption === 'NoCalle'">
           <p>Lote</p>
-          <input formControlName="lotec" class="input_style_1 w-75">
+          <input formControlName="lotec" class="input_style_1">
         </div>
         <br>
         <div>
           <p>Metros</p>
-          <input formControlName="metros" class="input_style_1 w-75">
+          <input formControlName="metros" class="input_style_1">
         </div>
         <br>
-        <div class="w-75 flex-sa opciones">
+        <div class="opciones">
           <p>Opción:</p>
           <label>
             <input type="radio" formControlName="opcionRadio" value="Norte"> Norte
@@ -95,7 +95,7 @@
     <!-- Resto de campos -->
     <div>
       <p>Prototipo</p>
-      <input class="input_style_1 w-75" formControlName="opcion">
+      <input class="input_style_1" formControlName="opcion">
     </div>
     <br>
 
@@ -114,17 +114,17 @@
     <div *ngIf="valorpormetros === true || valorpormetros === false">
       <p *ngIf="valorpormetros === true">Precio por M2</p>
       <p *ngIf="valorpormetros === false">Valor de la vivienda</p>
-      <input [(ngModel)]="preciobase" class="input_style_1 w-75" formControlName="precioVenta" type="number">
+      <input [(ngModel)]="preciobase" class="input_style_1" formControlName="precioVenta" type="number">
     </div>
     <br>
     <div *ngIf="valorpormetros === true">
       <p>Medidas de terreno</p>
-      <input [(ngModel)]="metrosterreno" class="input_style_1 w-75" formControlName="medidasTerreno" type="number">
+      <input [(ngModel)]="metrosterreno" class="input_style_1" formControlName="medidasTerreno" type="number">
     </div>
     <br>
     <div>
       <p>Descuento</p>
-      <input [(ngModel)]="descuentopor" class="input_style_1 w-75" formControlName="descuentoPronto" type="number">
+      <input [(ngModel)]="descuentopor" class="input_style_1" formControlName="descuentoPronto" type="number">
     </div>
     <br>
     <div>
@@ -136,7 +136,7 @@
       <input class="input_style_1 w-75" formControlName="terrenosComercial">
     </div>-->
     <br>
-    <div style="display: flex; justify-content: space-between;" class="w-75">
+    <div class="form-actions">
       <button type="submit" class="btn-style-1" (click)="picarbotton()">Alta inventario</button>
     </div>
   </form>
