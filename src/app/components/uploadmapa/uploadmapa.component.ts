@@ -22,6 +22,7 @@ import {
 import Swal from 'sweetalert2';
 import { MapasService } from 'src/app/services/mapas.service';
 import { Router } from '@angular/router';
+import { id } from '@swimlane/ngx-charts';
 
 declare var google: any;
 
@@ -121,6 +122,7 @@ export class UploadmapaComponent implements OnInit, AfterViewInit {
         const base64Image = e.target.result;
 
         var mapa = {
+          id: '',
           nombreMapa: this.fileName,
           urlMapa: base64Image,
           coordLat: this.coordLat,
@@ -136,11 +138,12 @@ export class UploadmapaComponent implements OnInit, AfterViewInit {
               confirmButtonText: 'Aceptar',
             });
 
-            this.router.navigate([
-              '/dashboard/mapa',
-              mapa.nombreMapa,
-              JSON.stringify(mapa),
-            ]);
+            mapa.id = data._id;
+
+            this.router.navigate(
+              ['/dashboard/mapa', mapa.nombreMapa],
+              { state: { mapa: mapa } }
+            );
           },
           error: (error) => {
             console.error('Error al subir mapa:', error);

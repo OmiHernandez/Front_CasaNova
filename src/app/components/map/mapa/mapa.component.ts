@@ -20,6 +20,9 @@ export class MapaComponent {
   realmapaname: string = "";
   nombreMapa: string = "";
   idMapa: string = "";
+  idMapaAntiguo: string = "";
+  coordLngMapa: string = "";
+  coordLatMapa: string = "";
   arrCordenadas: string[] = [];
 
   esConfiguracionMapa: boolean = false;
@@ -40,50 +43,79 @@ export class MapaComponent {
     private mapaService: MapasService,
     private router: Router,
     private inventario: InventarioApiService) {
-    this.route.params.subscribe(params => {
-      this.nombreMapa = params['nombre'];
-      this.idMapa = params['idMapa'];
 
-      if (this.nombreMapa == "ConfigurarMapa") {
-        this.esConfiguracionMapa = true;
-        // Usar el id del mapa para ir sacando las coordenadas de tods los lotes
-        this.coordenadaService.getCoordenadasPorIdMapa(this.idMapa).subscribe((data: any) => {
-          this.pinsSinAdaptacion = data;
-          console.log(this.pinsSinAdaptacion, "Datos pins");
-          this.convertirCoordenadasAPins();
+    const navigation = this.router.getCurrentNavigation();
 
-          this.mapaService.getMapaPorId(this.idMapa).subscribe(data2 => {
-            this.urlImagenMapa = data2.urlMapa;
-            console.log(this.urlImagenMapa, "IMAGEN MAPA C");
-            var mapa = document.getElementById("imagenMapa") as HTMLDivElement;
-            mapa.style.backgroundImage = "url('" + this.urlImagenMapa + "')";
+    if (navigation?.extras?.state && navigation.extras.state['mapa']) {
+      // New way: data passed via router state
+      this.urlImagenMapa = navigation.extras.state['mapa'];
+      this.nombreMapa = this.urlImagenMapa.nombreMapa;
+      this.realmapaname = this.urlImagenMapa.nombreMapa;
+      this.coordLatMapa = this.urlImagenMapa.coordLat;
+      this.coordLngMapa = this.urlImagenMapa.coordLng;
+      this.idMapaAntiguo = this.urlImagenMapa.id;
+      console.log('Mapa data received via state:', this.urlImagenMapa);
+    } else {
+      // Old way or "ConfigurarMapa": data from route params
+      this.route.params.subscribe(params => {
+        this.nombreMapa = params['nombre'];
+        this.idMapa = params['idMapa'];
+
+        if (this.nombreMapa == "ConfigurarMapa") {
+          this.esConfiguracionMapa = true;
+          this.coordenadaService.getCoordenadasPorIdMapa(this.idMapa).subscribe((data: any) => {
+            this.pinsSinAdaptacion = data;
+            console.log(this.pinsSinAdaptacion, "Datos pins");
+            this.convertirCoordenadasAPins();
+
+            this.mapaService.getMapaPorId(this.idMapa).subscribe(data2 => {
+              this.coordLatMapa = data2.coordLat;
+              this.coordLngMapa = data2.coordLng;
+              this.urlImagenMapa = data2.urlMapa; // urlImagenMapa is a string here
+              console.log(this.coordLatMapa, "COORDENADA LAT");
+              console.log(this.coordLngMapa, "COORDENADA LNG");
+              var mapaElement = document.getElementById("imagenMapa") as HTMLDivElement;
+              if (mapaElement) {
+                mapaElement.style.backgroundImage = "url('" + this.urlImagenMapa + "')";
+              }
+            });
           });
-        });
-      }
-      else {
-        var obj = params['idMapa'];
-        this.urlImagenMapa = JSON.parse(obj);
-        console.log(this.urlImagenMapa, "IMAGEN MAPA");
+        }
+        else {
+          // This block is for direct navigation with params (old way) if state wasn't used.
+          try {
+            var obj = JSON.parse(params['idMapa']);
+            this.urlImagenMapa = obj; // urlImagenMapa is an object here
+            this.realmapaname = this.urlImagenMapa.nombreMapa;
+            this.coordLatMapa = this.urlImagenMapa.coordLat;
+            this.coordLngMapa = this.urlImagenMapa.coordLng;
+            this.idMapaAntiguo = this.urlImagenMapa.id;
+            console.log(this.coordLatMapa, "COORDENADA LAT (from params)");
+          } catch (e) {
+            console.error('Error parsing map data from route params:', e);
+          }
+        }
+      });
+    }
 
-      }
-      console.log('Valor del parámetro nombre:'+ this.nombreMapa + "/" +  JSON.parse(this.idMapa.toString()).nombreMapa);
-      this.realmapaname = JSON.parse(this.idMapa.toString()).nombreMapa;  
-    });
     this.inventario.getInventorys().subscribe(data => {
       this.listaInventarios = data;
     });
   }
 
   ngAfterViewInit() {
-    // var  mapa = document.getElementById("imagenMapa") as HTMLDivElement;
-    // console.log(this.urlImagenMapa,"EEEE");
-    // mapa.style.backgroundImage="url('"+ this.urlImagenMapa+"')";
-    // console.log("url('"+ this.urlImagenMapa+"')");
-    if (this.nombreMapa != "ConfigurarMapa") {
-      var mapa = document.getElementById("imagenMapa") as HTMLDivElement;
-      console.log(mapa, "Elem");
-      mapa.style.backgroundImage = "url('" + this.urlImagenMapa.urlMapa + "')";
-      console.log(this.urlImagenMapa, "URLIMAGEN MAPA");
+    if (this.urlImagenMapa && typeof this.urlImagenMapa === 'object' && this.urlImagenMapa.urlMapa) {
+        var mapaDiv = document.getElementById("imagenMapa") as HTMLDivElement;
+        if (mapaDiv && !mapaDiv.style.backgroundImage) {
+          mapaDiv.style.backgroundImage = "url('" + this.urlImagenMapa.urlMapa + "')";
+          console.log("Image set in ngAfterViewInit from object:", this.urlImagenMapa.urlMapa);
+        }
+    } else if (typeof this.urlImagenMapa === 'string' && this.urlImagenMapa !== "") {
+        var mapaDiv = document.getElementById("imagenMapa") as HTMLDivElement;
+        if (mapaDiv && !mapaDiv.style.backgroundImage) {
+          mapaDiv.style.backgroundImage = "url('" + this.urlImagenMapa + "')";
+          console.log("Image set in ngAfterViewInit from string:", this.urlImagenMapa);
+        }
     }
   }
 
@@ -210,7 +242,7 @@ export class MapaComponent {
     p1.textContent = "Lote";
 
     var p2 = document.createElement("p");
-    p2.textContent = "Disponibile";
+    p2.textContent = "Disponible";
 
     div.appendChild(p1);
     div.appendChild(p2);
@@ -241,8 +273,12 @@ guardaMapa() {
   var mapa = {
     "nombreMapa": this.realmapaname,
     "urlMapa": this.urlImagenMapa.urlMapa,
+    "coordLng": this.coordLngMapa,
+    "coordLat": this.coordLatMapa,
     "coordenadas": [],
   };
+
+  console.log(mapa, "Mapa a guardar");
 
   this.mapaService.addMapa(mapa).subscribe((data: any) => {
     this.idMapa = data._id;
@@ -275,15 +311,16 @@ guardaMapa() {
 
 asignarCoordenadas() {
   var mapa = {
-    "idmapa": this.idMapa,
-    "coordenadas": this.arrCordenadas,
+    "nombreMapa": this.idMapa,
+    "coordenadasArray": this.arrCordenadas,
   };
 
   this.mapaService.putCoordenadas(mapa).subscribe(data => {
     console.log("Coordenadas Asignadas");
 
     // Llamar a deleteMapa usando this.nombreMapa como ID
-    this.mapaService.deleteMapa(this.nombreMapa).subscribe(() => {
+    console.log(this.idMapaAntiguo, "ID MAPA A ELIMINAR");
+    this.mapaService.deleteMapa(this.idMapaAntiguo).subscribe(() => {
       console.log('Mapa temporal eliminado después del proceso completo');
     });
 
